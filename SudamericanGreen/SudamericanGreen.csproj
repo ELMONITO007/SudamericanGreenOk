@@ -125,6 +125,37 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\img\about\1.jpg" />
+    <Content Include="assets\img\about\2.jpg" />
+    <Content Include="assets\img\about\3.jpg" />
+    <Content Include="assets\img\about\4.jpg" />
+    <Content Include="assets\img\close-icon.svg" />
+    <Content Include="assets\img\favicon.ico" />
+    <Content Include="assets\img\header-bg.jpg" />
+    <Content Include="assets\img\logos\creative-market.jpg" />
+    <Content Include="assets\img\logos\designmodo.jpg" />
+    <Content Include="assets\img\logos\envato.jpg" />
+    <Content Include="assets\img\logos\themeforest.jpg" />
+    <Content Include="assets\img\map-image.png" />
+    <Content Include="assets\img\navbar-logo.svg" />
+    <Content Include="assets\img\portfolio\01-full.jpg" />
+    <Content Include="assets\img\portfolio\01-thumbnail.jpg" />
+    <Content Include="assets\img\portfolio\02-full.jpg" />
+    <Content Include="assets\img\portfolio\02-thumbnail.jpg" />
+    <Content Include="assets\img\portfolio\03-full.jpg" />
+    <Content Include="assets\img\portfolio\03-thumbnail.jpg" />
+    <Content Include="assets\img\portfolio\04-full.jpg" />
+    <Content Include="assets\img\portfolio\04-thumbnail.jpg" />
+    <Content Include="assets\img\portfolio\05-full.jpg" />
+    <Content Include="assets\img\portfolio\05-thumbnail.jpg" />
+    <Content Include="assets\img\portfolio\06-full.jpg" />
+    <Content Include="assets\img\portfolio\06-thumbnail.jpg" />
+    <Content Include="assets\img\team\1.jpg" />
+    <Content Include="assets\img\team\2.jpg" />
+    <Content Include="assets\img\team\3.jpg" />
+    <Content Include="assets\mail\contact_me.js" />
+    <Content Include="assets\mail\contact_me.php" />
+    <Content Include="assets\mail\jqBootstrapValidation.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -1780,6 +1811,7 @@
     <Content Include="Content\vendor\jquery\jquery.min.js" />
     <Content Include="Content\vendor\jquery\jquery.slim.js" />
     <Content Include="Content\vendor\jquery\jquery.slim.min.js" />
+    <Content Include="css\styles.css" />
     <Content Include="Global.asax" />
     <Content Include="Imagenes\pregunta10.jpg" />
     <Content Include="Imagenes\pregunta12.jpg" />
@@ -1789,22 +1821,30 @@
     <Content Include="Imagenes\pregunta7.jpg" />
     <Content Include="Imagenes\pregunta8.jpg" />
     <Content Include="Imagenes\pregunta9.jpg" />
+    <Content Include="img\about 3.jpg" />
+    <Content Include="img\about1.jpg" />
+    <Content Include="img\about2.jpg" />
+    <Content Include="img\accesorios.jpg" />
     <Content Include="img\avatar 4.jpg" />
     <Content Include="img\avatar3.png" />
-    <Content Include="img\Check.png" />
+    <Content Include="img\bateria.jpg" />
     <Content Include="img\email.png" />
-    <Content Include="img\favicon-TB.png" />
-    <Content Include="img\Fondo %282%29.jpg" />
-    <Content Include="img\fondo 2.jpg" />
-    <Content Include="img\fondo 5.jpg" />
-    <Content Include="img\Fondo Login.jpg" />
-    <Content Include="img\Fondo ok.png" />
-    <Content Include="img\fondo3.jpg" />
-    <Content Include="img\fondo4.jpg" />
+    <Content Include="img\gancho.jpg" />
+    <Content Include="img\inversor.jpg" />
+    <Content Include="img\kit 1.jpg" />
+    <Content Include="img\kit 2.jpg" />
+    <Content Include="img\Lampara 1.jpg" />
     <Content Include="img\Linkedin-símbolo.png" />
-    <Content Include="img\TB.png" />
-    <Content Include="img\TR.png" />
-    <Content Include="img\Uncheck.png" />
+    <Content Include="img\lmapara.jpg" />
+    <Content Include="img\LOGIN.jpg" />
+    <Content Include="img\panel.jpg" />
+    <Content Include="img\parkison.jpg" />
+    <Content Include="img\refelctor.jpg" />
+    <Content Include="img\regulador.jpg" />
+    <Content Include="img\scali.jpg" />
+    <Content Include="img\Sudamerican Green_free-file.png" />
+    <Content Include="img\yo.jpg" />
+    <Content Include="js\scripts.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -1894,7 +1934,7 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
-    <Content Include="Video\Video.mp4" />
+    <Content Include="Video\video.mp4" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -2134,7 +2174,6 @@
     <Content Include="Views\Usuario\ErrorPage.cshtml" />
     <Content Include="Views\Usuario\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\TestExamen.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -2146,6 +2185,7 @@
     <Content Include="Views\Shared\_Layout2.cshtml" />
     <Content Include="Views\Login\Perfil.cshtml" />
     <Content Include="Views\Bitacora\Index.cshtml" />
+    <Content Include="Views\Home\Index - Copia.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
