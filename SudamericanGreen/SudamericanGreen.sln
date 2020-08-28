@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evaluaciones Tecnicas", "Evaluaciones Tecnicas.csproj", "{0E804E52-8487-4161-95EA-06934822A5A9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SudamericanGreen", "SudamericanGreen.csproj", "{0E804E52-8487-4161-95EA-06934822A5A9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evaluaciones Tecnicas.Tests", "..\Evaluaciones Tecnicas.Tests\Evaluaciones Tecnicas.Tests.csproj", "{2FD4814E-98D0-45FA-9DFD-5F51C45EDE3C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SudamericanGreen.Tests", "..\Evaluaciones Tecnicas.Tests\SudamericanGreen.Tests.csproj", "{2FD4814E-98D0-45FA-9DFD-5F51C45EDE3C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "..\Entities\Entities.csproj", "{5D916822-15D2-416B-AA9E-EF123950B0EA}"
 EndProject
@@ -44,7 +44,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.Data.6.0.1304.0\lib\NET45
 		SolutionGuid = {8FB56CCB-3E5F-47FD-9D72-104EE6E4C80E}
+		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.Data.6.0.1304.0\lib\NET45
 	EndGlobalSection
 EndGlobal

@@ -64,9 +64,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Evaluaciones Tecnicas\Evaluaciones Tecnicas.csproj">
+    <ProjectReference Include="..\Evaluaciones Tecnicas\SudamericanGreen.csproj">
       <Project>{0E804E52-8487-4161-95EA-06934822A5A9}</Project>
-      <Name>Evaluaciones Tecnicas</Name>
+      <Name>SudamericanGreen</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
