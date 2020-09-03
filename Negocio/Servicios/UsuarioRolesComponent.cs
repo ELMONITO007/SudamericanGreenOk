@@ -123,13 +123,21 @@ namespace Negocio
 
 
         {
+            bool aux = false;
+            if (usuarios is null)
+            {
+                aux = false;
+            }
+            else
+            {
 
+           
             Usuarios unUsuario = new Usuarios();
             UsuarioDac usuarioDac = new UsuarioDac();
             unUsuario = usuarioDac.ReadByEmail(usuarios.Email);
             List<UsuarioRoles> usuarioRoles = new List<UsuarioRoles>();
             usuarioRoles = obtenerRolesDisponiblesDelUsuario(unUsuario.Id);
-            bool aux = false;
+          
             if (usuarioRoles.Count == 0)
             {
                 aux = false;
@@ -157,7 +165,7 @@ namespace Negocio
 
               }
             }
-
+            }
 
             return aux;
 

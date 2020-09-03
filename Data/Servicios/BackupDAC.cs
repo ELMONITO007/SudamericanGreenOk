@@ -53,7 +53,7 @@ namespace Data
 
         public List<Backups> Read()
         {
-            const string SQL_STATEMENT = "select * from Bitacora";
+            const string SQL_STATEMENT = "SELECT * FROM[GreenElectric].[dbo].[Backup] where Activo = 1";
 
             List<Backups> result = new List<Backups>();
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
