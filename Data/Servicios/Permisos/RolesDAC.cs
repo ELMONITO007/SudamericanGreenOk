@@ -16,42 +16,21 @@ namespace Data
         private Roles LoadRoles(IDataReader dr)
         {
             Roles roles = new Roles();
-            roles.id = GetDataValue<string>(dr, "Id");
+            roles.Id = GetDataValue<int>(dr, "Id");
             roles.name = GetDataValue<string>(dr, "name");   
             return roles;
         }
 
-        public String ObtenerUltimaKey()
-
-        {
-
-            const string SQL_STATEMENT = "select top 1 * from AspNetRoles where Activo=1  order by ID desc";
-            Roles roles = null;
-
-            var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
-            using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
-            {
-              
-                using (IDataReader dr = db.ExecuteReader(cmd))
-                {
-                    if (dr.Read())
-                    {
-                        roles = LoadRoles(dr);
-                    }
-                }
-            }
-            int result = int.Parse(roles.id) + 1;
-            return result.ToString();
-        }
+      
 
         public Roles Create(Roles entity)
         {
-            const string SQL_STATEMENT = "insert into AspNetRoles(Id,name,activo)values(@Id,@name,1)";
+            const string SQL_STATEMENT = "insert into AspNetRoles(name,activo)values(@name,1)";
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
             using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
             {
                 db.AddInParameter(cmd, "@name", DbType.String, entity.name);
-                db.AddInParameter(cmd, "@id", DbType.String, ObtenerUltimaKey());
+             
                 entity.Id = Convert.ToInt32(db.ExecuteScalar(cmd));
             }
 
@@ -69,20 +48,11 @@ namespace Data
                 db.ExecuteNonQuery(cmd);
             }
         }
-        public void Delete(string id)
-        {
-            const string SQL_STATEMENT = "update AspNetRoles set Activo=0 where id=@Id";
-            var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
-            using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
-            {
-                db.AddInParameter(cmd, "@Id", DbType.String, id);
-                db.ExecuteNonQuery(cmd);
-            }
-        }
+      
 
         public List<Roles> Read()
         {
-            const string SQL_STATEMENT = "select * from AspNetRoles where activo=1";
+            const string SQL_STATEMENT = "select DISTINCT  r.Id,r.Name from RolesComposite as rc join AspNetRoles as r on r.Id=rc.ID_CompositeRol where ID_CompositeRol   is not null and activo=1";
 
             List<Roles> result = new List<Roles>();
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
@@ -102,7 +72,7 @@ namespace Data
 
         public Roles ReadBy(int id)
         {
-            const string SQL_STATEMENT = "select * from AspNetRoles where activo=1 and id=@Id";
+            const string SQL_STATEMENT = "select DISTINCT  r.Id,r.Name from RolesComposite as rc join AspNetRoles as r on r.Id=rc.ID_CompositeRol where ID_CompositeRol   is not null and activo=1 and id=@Id";
             Roles    roles = null;
 
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
@@ -121,28 +91,10 @@ namespace Data
         }
 
 
-        public Roles ReadBy(string id)
-        {
-            const string SQL_STATEMENT = "select * from AspNetRoles where activo=1 and id=@Id";
-            Roles roles = null;
-
-            var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
-            using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
-            {
-                db.AddInParameter(cmd, "@Id", DbType.String, id);
-                using (IDataReader dr = db.ExecuteReader(cmd))
-                {
-                    if (dr.Read())
-                    {
-                        roles = LoadRoles(dr);
-                    }
-                }
-            }
-            return roles;
-        }
+     
         public Roles ReadByNombreRol(string nombreRol)
         {
-            const string SQL_STATEMENT = "select * from AspNetRoles where activo=1 and name=@Id";
+            const string SQL_STATEMENT = "select DISTINCT  r.Id,r.Name from RolesComposite as rc join AspNetRoles as r on r.Id=rc.ID_CompositeRol where ID_CompositeRol   is not null and activo=1 and name=@Id";
             Roles roles = null;
 
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);

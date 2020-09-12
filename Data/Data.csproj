@@ -56,8 +56,9 @@
     <Compile Include="Servicios\DVVDac.cs" />
     <Compile Include="Servicios\EventoBitacoraDAC.cs" />
     <Compile Include="Servicios\PDFDac.cs" />
-    <Compile Include="Servicios\RolesDAC.cs" />
-    <Compile Include="Servicios\UsuarioRolesDAC.cs" />
+    <Compile Include="Servicios\Permisos\PermisoDAC.cs" />
+    <Compile Include="Servicios\Permisos\RolesDAC.cs" />
+    <Compile Include="Servicios\Permisos\UsuarioRolesDAC.cs" />
     <Compile Include="Usuario\UsuarioDac.cs" />
   </ItemGroup>
   <ItemGroup />

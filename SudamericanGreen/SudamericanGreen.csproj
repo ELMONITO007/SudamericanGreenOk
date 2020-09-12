@@ -1815,14 +1815,6 @@
     <Content Include="Content\vendor\jquery\jquery.slim.min.js" />
     <Content Include="css\styles.css" />
     <Content Include="Global.asax" />
-    <Content Include="Imagenes\pregunta10.jpg" />
-    <Content Include="Imagenes\pregunta12.jpg" />
-    <Content Include="Imagenes\pregunta21.jpg" />
-    <Content Include="Imagenes\pregunta23.jpg" />
-    <Content Include="Imagenes\Pregunta5.png" />
-    <Content Include="Imagenes\pregunta7.jpg" />
-    <Content Include="Imagenes\pregunta8.jpg" />
-    <Content Include="Imagenes\pregunta9.jpg" />
     <Content Include="img\about 3.jpg" />
     <Content Include="img\about1.jpg" />
     <Content Include="img\about2.jpg" />
@@ -2029,6 +2021,11 @@
     <Compile Include="Models\UsuarioModels.cs" />
     <Compile Include="Models\UsuarioRolesModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\Recurso.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Recurso.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -2270,6 +2267,7 @@
     <Folder Include="Backup\" />
     <Folder Include="Controllers\Examen\" />
     <Folder Include="Controllers\Informes\" />
+    <Folder Include="Imagenes\" />
     <Folder Include="PDF\" />
   </ItemGroup>
   <ItemGroup>
@@ -2284,6 +2282,15 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Recurso.en-US.resx" />
+    <EmbeddedResource Include="Resources\Recurso.pt-BR.resx" />
+    <EmbeddedResource Include="Resources\Recurso.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Recurso.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Recursos</CustomToolNamespace>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

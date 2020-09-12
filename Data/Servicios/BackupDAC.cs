@@ -31,7 +31,7 @@ namespace Data
             using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
             {
                
-                db.AddInParameter(cmd, "@Nombre", DbType.Int32, entity.Nombre);
+                db.AddInParameter(cmd, "@Nombre", DbType.String, entity.Nombre);
 
                 db.AddInParameter(cmd, "@Fecha", DbType.String, entity.Fecha);
         

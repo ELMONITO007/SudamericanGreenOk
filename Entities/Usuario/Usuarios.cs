@@ -15,6 +15,7 @@ namespace Entities
         public LoginError loginError { get; set; }
 
         [DisplayName("Apellido")]
+        [Display(ResourceType =typeof(Recursos.Recurso),Name ="Apellido")]
         public string Apellido { get; set; }
 
         [DisplayName("Nombre")]

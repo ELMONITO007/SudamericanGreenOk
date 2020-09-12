@@ -17,8 +17,8 @@ namespace Entities
         [DisplayName("Nombre del Permiso")]
         public string name { get; set; }
 
-
-
+        public List< Roles> listaRol { get; set; }
+        public List< Permiso> listaPermiso { get; set; }
         public Roles(string _id,string _NombrePermiso)
         {
             id = id;
@@ -27,7 +27,8 @@ namespace Entities
 
         public Roles()
         {
-
+            listaPermiso = new List<Permiso>();
+            listaRol = new List<Roles>();
         }
 
     }

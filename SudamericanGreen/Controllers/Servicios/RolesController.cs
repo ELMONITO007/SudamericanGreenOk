@@ -12,7 +12,7 @@ namespace Evaluaciones.Controllers
     public class RolesController : Controller
     {
         // GET: Roles
-        [AuthorizerUser(_roles: "Administrador,RRHH")]
+        [AuthorizerUser(_roles: "Administrador")]
         public ActionResult Index()
         {
             RolesComponent roles = new RolesComponent();
@@ -20,7 +20,7 @@ namespace Evaluaciones.Controllers
         }
 
         // GET: Roles/Details/5
-        [AuthorizerUser(_roles: "Administrador,RRHH")]
+        [AuthorizerUser(_roles: "Administrador")]
         public ActionResult Details(int id)
         {
             RolesComponent roles = new RolesComponent();
