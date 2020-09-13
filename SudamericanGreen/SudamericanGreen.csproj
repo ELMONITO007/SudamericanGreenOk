@@ -1914,6 +1914,7 @@
     <Content Include="CodeTemplates\ApiControllerWithActions\Controller.cs.t4" />
     <Content Include="CodeTemplates\ApiControllerEmpty\Controller.vb.t4" />
     <Content Include="CodeTemplates\ApiControllerEmpty\Controller.cs.t4" />
+    <Content Include="CodeTemplates\MvcView\ErrorPage.cs.t4" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2008,8 +2009,9 @@
     <Compile Include="Controllers\Servicios\BitacoraController.cs" />
     <Compile Include="Controllers\Servicios\LoginController.cs" />
     <Compile Include="Controllers\Servicios\PDFController.cs" />
-    <Compile Include="Controllers\Servicios\RolesController.cs" />
-    <Compile Include="Controllers\Servicios\UsuarioRolesController.cs" />
+    <Compile Include="Controllers\Servicios\Permisos\PermisoController.cs" />
+    <Compile Include="Controllers\Servicios\Permisos\RolesController.cs" />
+    <Compile Include="Controllers\Servicios\Permisos\UsuarioRolesController.cs" />
     <Compile Include="Controllers\Usuario\UsuarioController.cs" />
     <Compile Include="EntityBase.cs" />
     <Compile Include="Filter\AuthorizerUser.cs" />
@@ -2255,6 +2257,11 @@
     <Content Include="Views\Bitacora\Index.cshtml" />
     <Content Include="Views\Home\Index - Copia.cshtml" />
     <Content Include="Views\Backup\Index.cshtml" />
+    <Content Include="Views\Permiso\Index.cshtml" />
+    <Content Include="Views\Permiso\Create.cshtml" />
+    <Content Include="Views\Permiso\Edit.cshtml" />
+    <Content Include="Views\Permiso\ErroPage.cshtml" />
+    <Content Include="Views\Permiso\Delete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -2265,7 +2272,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Backup\" />
-    <Folder Include="Controllers\Examen\" />
     <Folder Include="Controllers\Informes\" />
     <Folder Include="Imagenes\" />
     <Folder Include="PDF\" />

@@ -59,8 +59,9 @@
     <Compile Include="Servicios\DVVComponent.cs" />
     <Compile Include="Servicios\EventoBitacoraComponent.cs" />
     <Compile Include="Servicios\LoginComponent.cs" />
-    <Compile Include="Servicios\RolesComponent.cs" />
-    <Compile Include="Servicios\UsuarioRolesComponent.cs" />
+    <Compile Include="Servicios\Permisos\PermisoComponent.cs" />
+    <Compile Include="Servicios\Permisos\RolesComponent.cs" />
+    <Compile Include="Servicios\Permisos\UsuarioRolesComponent.cs" />
     <Compile Include="Usuario\UsuariosComponent.cs" />
   </ItemGroup>
   <ItemGroup>

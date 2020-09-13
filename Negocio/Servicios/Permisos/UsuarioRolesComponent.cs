@@ -41,18 +41,18 @@ namespace Negocio
         {
             throw new NotImplementedException();
         }
-        public  UsuarioRoles ReadBy(string id_role, int id_Usuario)
+        public  UsuarioRoles ReadBy(int id_role, int id_Usuario)
         {
             UsuarioRoles result = default(UsuarioRoles);
             var usuarioRolesDAC = new UsuarioRolesDAC();
-            result = usuarioRolesDAC.ReadBy(id_role, id_Usuario);
+            result = usuarioRolesDAC.ReadBy(id_role);
             return result;
         }
         public List< UsuarioRoles> ReadByUsuario(int id_Usuario)
         {
             List<UsuarioRoles> result = default(List<UsuarioRoles>);
             var usuarioRolesDAC = new UsuarioRolesDAC();
-            result = usuarioRolesDAC.ReadByUsuario(id_Usuario);
+            //result = usuarioRolesDAC.ReadByRol(id_Usuario);
             return result;
         }
         public List<UsuarioRoles> ReadByRoles(string id_Roles)

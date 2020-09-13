@@ -13,7 +13,7 @@ namespace Evaluaciones.Controllers
     public class AdminController : Controller
     {
         // GET: Admin
-        [AuthorizerUser(_roles: "Administrador,CrearPregunta,RRHH")]
+        //[AuthorizerUser(_roles: "Administrador")]
         public ActionResult Index()
         {
             return View();

@@ -11,7 +11,7 @@ namespace Evaluaciones_Tecnicas.Controllers.Servicios
     public class BitacoraController : Controller
     {
         // GET: Bitacora
-        [AuthorizerUser(_roles: "Administrador,RRHH")]
+        //[AuthorizerUser(_roles: "Administrador")]
         public ActionResult Index()
         {
             BitacoraComponent bitacoraComponent = new BitacoraComponent();

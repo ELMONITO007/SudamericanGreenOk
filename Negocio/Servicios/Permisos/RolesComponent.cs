@@ -23,7 +23,7 @@ namespace Negocio
         public override void Delete(int id)
         {
             var roles = new RolesDAC();
-            roles.Delete(id.ToString());
+            roles.Delete(id);
         }
 
         public override List<Roles> Read()
@@ -39,7 +39,7 @@ namespace Negocio
             Roles result = default(Roles);
             var roles = new RolesDAC();
 
-            result = roles.ReadBy(id.ToString());
+            result = roles.ReadBy(id);
             return result;
         }
         public  Roles ReadByNombreRol(string name)

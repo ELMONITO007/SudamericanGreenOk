@@ -1,0 +1,46 @@
+﻿@model Entities.Permiso
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<link href="~/Content/modern-business.css" rel="stylesheet" />
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+       <div class="d-flex flex-column" style="max-width:60%">
+        <div class="container-fluid">
+            <div class="card shadow mb-4">
+                <div class=" card-header py-3" >
+                    <h6 class="m-0 font-weight-bold text-primary">Actualizar el  Permiso<i>"@Html.DisplayFor(model => model.name)"</i></h6>
+
+
+
+                </div>
+                   <div class="card-body">
+             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+      <h5  class="text-justify">  
+            @Html.LabelFor(model => model.name, new { @class = "control-label col-md-2" })
+</h5>
+          
+                @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
+            
+        </div>
+
+       <input type="button" class="btn btn-outline-primary " style="margin-left:30%;max-width:40%"   value="Volver" onclick="location.href='@Url.Action("Index", "Permiso")'" />
+
+                <br />
+
+                 <input type="submit" style="margin-left:30%;max-width:40%" value="Crear" class="btn btn-outline-info" />
+  
+         </div>
+     </div>
+
+    </div>
+}
+

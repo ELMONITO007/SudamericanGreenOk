@@ -45,7 +45,7 @@ namespace Evaluaciones.Models
             return result;
 
         }
-        public UsuarioRolesModels ReadBy(string Id_roles, int Id_usuario)
+        public UsuarioRolesModels ReadBy(int Id_roles, int Id_usuario)
         {
             UsuarioRolesComponent usuarioRolesComponent = new UsuarioRolesComponent();
             UsuarioRoles usuarioRoles = new UsuarioRoles();

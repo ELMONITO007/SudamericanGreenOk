@@ -13,7 +13,7 @@ namespace Evaluaciones_Tecnicas.App_Start
             filters.Add(new HandleErrorAttribute());
             filters.Add(new Filter.ExceptionFilter());
 
-            filters.Add(new Filter.VerificarSesion());
+            //filters.Add(new Filter.VerificarSesion());
          
         }
     }

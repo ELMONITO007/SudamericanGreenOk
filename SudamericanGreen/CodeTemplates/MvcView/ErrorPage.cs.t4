@@ -44,25 +44,34 @@ if (!String.IsNullOrEmpty(LayoutPageFile)) {
     PushIndent("    ");
 }
 #>
-
 <link href="~/Content/modern-business.css" rel="stylesheet" />
 
-<div>
-    <h3>¿Esta seguro de eliminar el "" <i>"@Html.DisplayFor(model => model)"</i>?</h3>
-    <hr />
 
 
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
+<div id="content-wrapper" class="d-flex flex-column">
 
-<div class="form-actions no-color">
-    <input type="submit" value="Eliminar" style="margin-left:1%" class="btn btn-outline-info" />
+    <!-- Main Content -->
+    <div id="content">
 
-    <input type="button" class="btn btn-outline-primary " style="float:left;margin-left:1%;margin-top:3%" value="Volver" onclick="location.href='@Url.Action("Index", "Permiso")'" />
-</div>
-    }
-</div>
+
+
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+
+            <!-- 404 Error Text -->
+            <div class="text-center">
+                <div class="error mx-auto" data-text="Error">Error</div>
+                <p class="lead text-gray-800 mb-5">No se puede agregrar o modificar el "" <i>"@Html.DisplayFor(model => model) "</i>.Ya existe
+<p class="text-gray-500 mb-0">Por favor colocar otro nombre</p>
+                <a href="@Url.Action("Index", "")">← volver al inicio</a>
+            </div>
+
+        </div>
+        <!-- /.container-fluid -->
+
+    </div>
+    <!-- End of Main Content -->
+
 
 
 

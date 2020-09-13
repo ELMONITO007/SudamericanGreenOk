@@ -15,7 +15,7 @@ namespace Evaluaciones.Controllers
     //[Authorize(Roles = "Administrador")]//para entrar en admin debe estar logueado y  asignarle el rol
     public class UsuarioController : Controller
     {
-        [AuthorizerUser(_roles: "Administrador,RRHH")]
+        //[AuthorizerUser(_roles: "Administrador")]
         // GET: Usuario
         public ActionResult Index()
         {
@@ -25,12 +25,12 @@ namespace Evaluaciones.Controllers
         }
 
         // GET: Usuario/Details/5
-        [AuthorizerUser(_roles: "Administrador,RRHH")]
+        //[AuthorizerUser(_roles: "Administrador")]
         public ActionResult Details(int id)
         {
             return View();
         }
-        [AuthorizerUser(_roles: "Administrador,RRHH")]
+        //[AuthorizerUser(_roles: "Administrador")]
         public ActionResult Create()
         {
 
@@ -38,7 +38,7 @@ namespace Evaluaciones.Controllers
             return View();
         }
         // Post: Usuario/Create
-        [AuthorizerUser(_roles: "Administrador,RRHH")]
+        //[AuthorizerUser(_roles: "Administrador")]
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
@@ -73,7 +73,7 @@ namespace Evaluaciones.Controllers
 
         }
 
-        [AuthorizerUser(_roles: "Administrador,RRHH")]
+        //[AuthorizerUser(_roles: "Administrador")]
         public ActionResult UsuarioExamen()
         {
 
@@ -81,14 +81,14 @@ namespace Evaluaciones.Controllers
         }
 
         [HttpPost]
-        [AuthorizerUser(_roles: "Administrador,RRHH")]
+        //[AuthorizerUser(_roles: "Administrador")]
         public ActionResult UsuarioExamen(FormCollection collection)
         {
             return View();
 
         }
 
-        [AuthorizerUser(_roles: "Administrador,RRHH")]
+        //[AuthorizerUser(_roles: "Administrador")]
         public ActionResult ErrorPage(String Username)
         {
             Usuarios usuarios = new Usuarios();
@@ -97,14 +97,14 @@ namespace Evaluaciones.Controllers
         }
 
         // GET: Usuario/Edit/5
-        [AuthorizerUser(_roles: "Administrador,RRHH")]
+        //[AuthorizerUser(_roles: "Administrador")]
         public ActionResult Edit(int id)
         {
             return View();
         }
 
         // POST: Usuario/Edit/5
-        [AuthorizerUser(_roles: "Administrador,RRHH")]
+        //[AuthorizerUser(_roles: "Administrador")]
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -121,7 +121,7 @@ namespace Evaluaciones.Controllers
         }
 
         // GET: Usuario/Delete/5
-        [AuthorizerUser(_roles: "Administrador,RRHH")]
+        //[AuthorizerUser(_roles: "Administrador")]
         public ActionResult Delete(int id)
         {
             UsuariosComponent usuariosComponent = new UsuariosComponent();
@@ -130,7 +130,7 @@ namespace Evaluaciones.Controllers
 
         // POST: Usuario/Delete/5
         [HttpPost]
-        [AuthorizerUser(_roles: "Administrador,RRHH")]
+        //[AuthorizerUser(_roles: "Administrador")]
         public ActionResult Delete(int id, FormCollection collection)
         {
             try

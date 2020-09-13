@@ -85,7 +85,26 @@ namespace Data
             }
             return roles;
         }
+        public Permiso ReadBy(String   id)
+        {
 
+            const string SQL_STATEMENT = "select DISTINCT  r.Id,r.Name from RolesComposite as rc join AspNetRoles as r on r.Id=rc.ID_CompositePermiso where ID_CompositeRol   is  null and activo =1 and r.Name=@Id";
+            Permiso roles = null;
+
+            var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
+            using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
+            {
+                db.AddInParameter(cmd, "@Id", DbType.String, id);
+                using (IDataReader dr = db.ExecuteReader(cmd))
+                {
+                    if (dr.Read())
+                    {
+                        roles = LoadRoles(dr);
+                    }
+                }
+            }
+            return roles;
+        }
         public void Update(Permiso entity)
         {
             const string SQL_STATEMENT = "update AspNetRoles set name=@name where id=@Id ";
