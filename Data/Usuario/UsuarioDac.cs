@@ -162,8 +162,9 @@ namespace Data
             throw new NotImplementedException();
         }
 
-
-
-       
+        public Usuarios ReadBy(string id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

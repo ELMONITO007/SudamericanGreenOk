@@ -1,6 +1,7 @@
 ﻿using Entities;
 using Evaluaciones_Tecnicas.Filter;
 using Negocio;
+using Negocio.Servicios.Permisos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,8 +46,15 @@ namespace Evaluaciones.Controllers
                 RolesComponent rolesComponent = new RolesComponent();
                 Roles roles = new Roles();
                 roles.name = collection.Get("name");
-                rolesComponent.Create(roles);
-                return RedirectToAction("Index");
+                if (rolesComponent.Create(roles) is null)
+                {
+                   
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return RedirectToAction("ErrorPage",new { id=roles.name});
+                }
             }
             catch (Exception e)
             {
@@ -74,8 +82,19 @@ namespace Evaluaciones.Controllers
                 Roles roles = new Roles();
                 roles.name = collection.Get("name");
                 roles.id = id;
-                rolesComponent.Update(roles);
-                return RedirectToAction("Index");
+                Roles rolBase = new Roles();
+                if (rolesComponent.Verificar(roles))
+                {
+                    rolesComponent.Update(roles);
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return RedirectToAction("ErrorPage",new { id=roles.name});
+                }
+
+
+            
             }
             catch (Exception e)
             {
@@ -109,5 +128,14 @@ namespace Evaluaciones.Controllers
                 return View();
             }
         }
+
+
+
+        public ActionResult ErrorPage(String id)
+        {
+            RolesComponent roles = new RolesComponent();
+            return View(roles.ReadBy(id));
+        }
+
     }
 }

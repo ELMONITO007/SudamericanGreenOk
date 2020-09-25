@@ -1,4 +1,5 @@
-﻿using Negocio.Servicios.Permisos;
+﻿using Entities;
+using Negocio.Servicios.Permisos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,7 @@ namespace Evaluaciones_Tecnicas.Controllers
 
         //
         // GET: /Permiso/Details/5
-        public ActionResult ErroPage(int id)
+        public ActionResult ErroPage(String id)
         {
             PermisoComponent permisoComponent = new PermisoComponent();
             return View(permisoComponent.ReadBy(id));
@@ -39,11 +40,22 @@ namespace Evaluaciones_Tecnicas.Controllers
         {
             try
             {
+                Permiso permiso = new Permiso();
+                permiso.name = collection.Get("name");
+                PermisoComponent permisoComponent = new PermisoComponent();
+                if (permisoComponent.Create(permiso) is null)
+                {
+                    return RedirectToAction("ErroPage", new { id = permiso.name});
+                }
+                else
+                {
+                    return RedirectToAction("Index");
+                }
                 // TODO: Add insert logic here
 
-                return RedirectToAction("Index");
+                
             }
-            catch
+            catch (Exception e)
             {
                 return View();
             }
@@ -65,10 +77,23 @@ namespace Evaluaciones_Tecnicas.Controllers
             try
             {
                 // TODO: Add update logic here
+                Permiso permiso = new Permiso();
+                permiso.name = collection.Get("name");
+                permiso.Id = id;
+                PermisoComponent permisoComponent = new PermisoComponent();
+                if (permisoComponent.Verificar(permiso))
+                {
+                    permisoComponent.Update(permiso);
+                    return RedirectToAction("Index");
 
-                return RedirectToAction("Index");
+                }
+                else
+                {
+                    return RedirectToAction("ErroPage", new { id = permiso.name });
+                }
+               
             }
-            catch
+            catch (Exception e)
             {
                 return View();
             }
@@ -90,7 +115,8 @@ namespace Evaluaciones_Tecnicas.Controllers
             try
             {
                 // TODO: Add delete logic here
-
+                PermisoComponent permisoComponent = new PermisoComponent();
+                permisoComponent.Delete(id);
                 return RedirectToAction("Index");
             }
             catch

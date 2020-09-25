@@ -148,5 +148,10 @@ namespace Data
             }
 
         }
+
+        public UsuarioRoles ReadBy(string id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -2262,6 +2262,8 @@
     <Content Include="Views\Permiso\Edit.cshtml" />
     <Content Include="Views\Permiso\ErroPage.cshtml" />
     <Content Include="Views\Permiso\Delete.cshtml" />
+    <Content Include="Views\Login\Deslogueo.cshtml" />
+    <Content Include="Views\Roles\ErrorPage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

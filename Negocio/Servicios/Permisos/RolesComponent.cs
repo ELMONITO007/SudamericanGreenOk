@@ -13,11 +13,21 @@ namespace Negocio
     {
         public override Roles Create(Roles objeto)
         {
-            Roles result = default(Roles);
-            var roles = new RolesDAC();
-
-            result = roles.Create(objeto);
-            return result;
+            if (Verificar(objeto))
+            {
+                Roles result = default(Roles);
+                var roles = new RolesDAC();
+                Roles rolesBase = new Roles();
+                result = roles.Create(objeto);
+                rolesBase = roles.ReadBy(objeto.name);
+                roles.CreateEtapa2(rolesBase);
+          
+                return result;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public override void Delete(int id)
@@ -42,6 +52,14 @@ namespace Negocio
             result = roles.ReadBy(id);
             return result;
         }
+        public  Roles ReadBy(string id)
+        {
+            Roles result = default(Roles);
+            var roles = new RolesDAC();
+
+            result = roles.ReadBy(id);
+            return result;
+        }
         public  Roles ReadByNombreRol(string name)
         {
             Roles result = default(Roles);
@@ -58,6 +76,23 @@ namespace Negocio
 
           roles.Update(objeto);
           
+        }
+
+        public bool Verificar(Roles entity)
+
+        {
+            RolesDAC rolesDAC = new RolesDAC();
+            Roles roles = new Roles();
+            roles = rolesDAC.ReadBy(entity.name);
+            if (roles is null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
         }
     }
 }

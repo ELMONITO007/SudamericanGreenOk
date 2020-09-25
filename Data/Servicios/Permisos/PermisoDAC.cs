@@ -33,6 +33,20 @@ namespace Data
 
             return entity;
         }
+        public Permiso CreateEtapa2(Permiso entity)
+        {
+            const string SQL_STATEMENT = "insert into RolesComposite(ID_CompositePermiso)values(@ID_CompositePermiso)";
+            var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
+            using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
+            {
+                db.AddInParameter(cmd, "@ID_CompositePermiso", DbType.String, entity.Id);
+
+                entity.Id = Convert.ToInt32(db.ExecuteScalar(cmd));
+            }
+
+
+            return entity;
+        }
 
         public void Delete(int id)
         {
@@ -85,10 +99,10 @@ namespace Data
             }
             return roles;
         }
-        public Permiso ReadBy(String   id)
+        public Permiso ReadBy(String  id)
         {
 
-            const string SQL_STATEMENT = "select DISTINCT  r.Id,r.Name from RolesComposite as rc join AspNetRoles as r on r.Id=rc.ID_CompositePermiso where ID_CompositeRol   is  null and activo =1 and r.Name=@Id";
+            const string SQL_STATEMENT = "select   * from AspNetRoles where Name=@Id and activo=1";
             Permiso roles = null;
 
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
@@ -107,15 +121,18 @@ namespace Data
         }
         public void Update(Permiso entity)
         {
-            const string SQL_STATEMENT = "update AspNetRoles set name=@name where id=@Id ";
+            const string SQL_STATEMENT = "update AspNetRoles set name=@name where id=@id ";
 
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
             using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
             {
                 db.AddInParameter(cmd, "@name", DbType.String, entity.name);
-
+                db.AddInParameter(cmd, "@id", DbType.String, entity.Id);
                 db.ExecuteNonQuery(cmd);
             }
         }
+
+
+
     }
 }

@@ -49,7 +49,10 @@ namespace Data
         {
             throw new NotImplementedException();
         }
-
+        public DVV ReadBy(string id)
+        {
+            throw new NotImplementedException();
+        }
         public DVV ReadByTabla(string tabla)
         {
             const string SQL_STATEMENT = "select top 1 * from DVV where tabla=@tabla order by ID_DVV desc";

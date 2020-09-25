@@ -71,7 +71,10 @@ namespace Data.Servicios
         {
             throw new NotImplementedException();
         }
-     
+        public Bitacora ReadBy(string id)
+        {
+            throw new NotImplementedException();
+        }
 
         public void Update(Bitacora entity)
         {

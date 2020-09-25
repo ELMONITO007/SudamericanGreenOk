@@ -10,5 +10,7 @@ namespace Data
         TEntity ReadBy(int id);
         void Update(TEntity entity);
         void Delete(int id);
+    
+        TEntity ReadBy(string id);
     }
 }

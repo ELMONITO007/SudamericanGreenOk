@@ -32,7 +32,15 @@ namespace Negocio.Servicios.Permisos
             if (Verificar(entity))
             {
                 PermisoDAC permisoDAC = new PermisoDAC();
-                return permisoDAC.Create(entity);
+                Permiso permiso = new Permiso();
+                Permiso permisoBase = new Permiso();
+                permiso = permisoDAC.Create(entity);
+                permisoBase = permisoDAC.ReadBy(entity.name);
+                permisoDAC.CreateEtapa2(permisoBase);
+               
+
+
+                return permisoBase;
             }
             else
             {
@@ -58,7 +66,11 @@ namespace Negocio.Servicios.Permisos
             PermisoDAC permisoDAC = new PermisoDAC();
             return permisoDAC.ReadBy(id);
         }
-
+        public Permiso ReadBy(string id)
+        {
+            PermisoDAC permisoDAC = new PermisoDAC();
+            return permisoDAC.ReadBy(id);
+        }
         public void Update(Permiso entity)
         {
             PermisoDAC permisoDAC = new PermisoDAC();

@@ -43,10 +43,10 @@
                                                     @Html.DisplayFor(modelItem => item.name)
                                                 </td>
                                                 <td>
-                                                    @Html.ActionLink("Editar", "Edit", new { id = int.Parse(item.id) }) |
-                                                    @Html.ActionLink("Detalles", "Details", new { id = int.Parse(item.id) }) |
-                                                    @Html.ActionLink("Eliminar", "Delete", new { id = int.Parse(item.id) }) |
-                                                    @Html.ActionLink("Ver Usuarios", "Roles", "UsuarioRoles", new { id = item.id }, null)
+                                                    @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
+                                                    @Html.ActionLink("Detalles", "Details", new { id = item.Id }) |
+                                                    @Html.ActionLink("Eliminar", "Delete", new { id = item.Id}) |
+                                                    @Html.ActionLink("Ver Usuarios", "Roles", "UsuarioRoles", new { id = item.Id }, null)
                                                 </td>
 
 

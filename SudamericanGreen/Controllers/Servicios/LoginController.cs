@@ -43,7 +43,13 @@ namespace Evaluaciones.Controllers
 
             return View();
         }
+        public ActionResult Deslogueo()
+        {
+            Session["UserName"] = null;
+            Session.Abandon();
 
+            return RedirectToAction("index", "home");
+        }
         [HttpPost]
         [AllowAnonymous]
         public ActionResult Usuarios(Usuarios usuarios)
