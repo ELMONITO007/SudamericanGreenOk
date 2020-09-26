@@ -94,5 +94,46 @@ namespace Negocio
             }
 
         }
+
+
+        #region Composite
+        public List<Roles> ObtenerPermisosORolesDeUnRol(int id)
+        {
+            RolesDAC rolesDAC = new RolesDAC();
+            return rolesDAC.ObtenerPermisosORolesDeUnRol(id);
+
+
+        }
+        public Roles ObtenerComposite(Roles entity)
+        {
+            Roles roles = new Roles();
+            RolesDAC rolesDAC = new RolesDAC();
+            roles = entity;
+            
+            foreach (Roles item in ObtenerPermisosORolesDeUnRol(entity.Id))
+            {
+
+                if (rolesDAC.VerificarSiEsUnPermiso(item.Id)!=null)
+                {
+                    roles.listaRol.Add(item);
+                }
+                else if (rolesDAC.VerificarSiEsUnRol(item.Id) !=null)
+                {
+                    Roles roles1 = new Roles();
+                    roles1 = ObtenerComposite(item);
+                    roles.listaRol.Add(roles1);
+                }
+              
+
+            }
+
+            
+
+            return roles;
+        
+        
+        }
+
+        #endregion
     }
 }

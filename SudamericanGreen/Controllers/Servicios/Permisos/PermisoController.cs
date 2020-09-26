@@ -15,6 +15,8 @@ namespace Evaluaciones_Tecnicas.Controllers
         public ActionResult Index()
         {
             PermisoComponent permisoComponent = new PermisoComponent();
+         
+
             return View(permisoComponent.Read());
         }
 

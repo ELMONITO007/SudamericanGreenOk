@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace Entities
 {
-    public class Permiso : EntityBase
+    public class Permiso : Roles 
     {
-        public override int Id { get; set; }
-        public string name { get; set; }
+       
 
 
     }

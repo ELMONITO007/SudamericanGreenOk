@@ -1,0 +1,96 @@
+﻿@model Entities.Roles
+
+@{
+    ViewBag.Title = "VerPermisos";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<link href="~/Content/modern-business.css" rel="stylesheet" />
+<link href="~/Content/js/jquery.treeview.css" rel="stylesheet" />
+<script src="~/Content/js/jquery.treeview.js"></script>
+
+<script type="text/javascript">
+    $(function () {
+        $("#treeview ul").treeview();
+    });
+</script>
+
+<div class="card shadow mb-auto " style="max-width:35%;margin-left:1%">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Lista de Permsios para el Rol @Model.name</h6>
+    </div>
+    <div class="card-body">
+        <div id="treeview">
+
+
+
+            <ul>
+                <li style="visibility:hidden">
+
+
+
+                    @foreach (var item in Model.listaRol)
+                    {
+
+                        if (item.listaRol.Count == 0)
+                        {
+                        <li>
+
+                            <b>Permiso de @Model.name: @Html.DisplayFor(modelitem => item.name)</b>
+
+                        </li>
+
+
+                    }
+                    if (item.listaRol.Count != 0)
+                    {
+
+                        <li>
+                            Rol: @item.name
+
+                            <ul>
+
+                                @foreach (var subItem in item.listaRol)
+                                {
+                                    <li>
+                                        Permiso del Rol  @item.name:  @Html.DisplayFor(modelitem => subItem.name)
+
+                                        @if (subItem.listaRol.Count != 0)
+                                        {
+                                            <ul>
+                                                @foreach (var SubSubItem in subItem.listaRol)
+                                                {
+                                                    <li>
+                                                        Permiso del Rol @subItem.name: @Html.DisplayFor(modelitem => SubSubItem.name)
+                                                    </li>
+                                                }
+
+
+
+                                            </ul>
+                                        }
+                                    </li>
+
+
+                                }
+                            </ul>
+                        </li>
+
+
+
+
+
+                    }
+                }
+
+                    </li>
+                </ul>
+                <div class="form-actions no-color">
+                   
+                    <input type="button" class="btn btn-outline-primary " style="float:right" value="Volver" onclick="location.href='@Url.Action("Index", "Roles")'" />
+                </div>
+            </div>
+</div>
+    </div>
+
+

@@ -17,6 +17,7 @@ namespace Evaluaciones.Controllers
         public ActionResult Index()
         {
             RolesComponent roles = new RolesComponent();
+         
             return View(roles.Read());
         }
 
@@ -61,7 +62,16 @@ namespace Evaluaciones.Controllers
                 return View();
             }
         }
-
+        public ActionResult VerPermisos(int id)
+        {
+            RolesComponent roles = new RolesComponent();
+            Roles roles1 = new Roles();
+      
+           roles1= roles.ReadBy(id);
+            roles.ObtenerComposite(roles1);
+            return View(roles1);
+        }
+       
         // GET: Roles/Edit/5
         //[AuthorizerUser(_roles: "Administrador")]
         public ActionResult Edit(int id)

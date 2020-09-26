@@ -175,10 +175,10 @@ namespace Data
             roles.name = GetDataValue<string>(dr, "name");
             return roles;
         }
-        public Roles ObtenerPermisosORolesDeUnRol(int id)
+        public List<Roles> ObtenerPermisosORolesDeUnRol(int id)
         {
             const string SQL_STATEMENT = "select * from RolesComposite as rc join AspNetRoles as r on r.Id=rc.ID_CompositePermiso where activo=1 and ID_CompositeRol=@Id";
-            Roles roles = null;
+           List<Roles> roles = new List<Roles>();
 
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
             using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
@@ -186,9 +186,11 @@ namespace Data
                 db.AddInParameter(cmd, "@Id", DbType.Int32, id);
                 using (IDataReader dr = db.ExecuteReader(cmd))
                 {
-                    if (dr.Read())
+                    while (dr.Read())
                     {
-                        roles = LoadRoles(dr);
+                        Roles roles1 = new Roles();
+                        roles1 = LoadRolesComposite(dr);
+                        roles.Add(roles1);
                     }
                 }
             }

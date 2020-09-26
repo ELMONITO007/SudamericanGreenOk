@@ -202,6 +202,11 @@
     <Content Include="Content\js\jquery.mixitup.js" />
     <Content Include="Content\js\jquery.nav.js" />
     <Content Include="Content\js\jquery.stellar.min.js" />
+    <Content Include="Content\js\jquery.treeview.async.js" />
+    <Content Include="Content\js\jquery.treeview.css" />
+    <Content Include="Content\js\jquery.treeview.edit.js" />
+    <Content Include="Content\js\jquery.treeview.js" />
+    <Content Include="Content\js\jquery.treeview.sortable.js" />
     <Content Include="Content\js\jquery.vide.js" />
     <Content Include="Content\js\main.js" />
     <Content Include="Content\js\menu.js" />
@@ -1823,6 +1828,7 @@
     <Content Include="img\avatar3.png" />
     <Content Include="img\bateria.jpg" />
     <Content Include="img\email.png" />
+    <Content Include="img\energia-renovable.png" />
     <Content Include="img\gancho.jpg" />
     <Content Include="img\inversor.jpg" />
     <Content Include="img\kit 1.jpg" />
@@ -2264,6 +2270,7 @@
     <Content Include="Views\Permiso\Delete.cshtml" />
     <Content Include="Views\Login\Deslogueo.cshtml" />
     <Content Include="Views\Roles\ErrorPage.cshtml" />
+    <Content Include="Views\Roles\VerPermisos.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
