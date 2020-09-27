@@ -85,12 +85,18 @@
 
                     </li>
                 </ul>
-                <div class="form-actions no-color">
-                   
-                    <input type="button" class="btn btn-outline-primary " style="float:right" value="Volver" onclick="location.href='@Url.Action("Index", "Roles")'" />
-                </div>
+            <div class="form-actions no-color">
+                <br />
+                <br />
+                <input type="button" class="btn btn-outline-primary " style="float:left" value="Quitar Permiso" onclick="location.href='@Url.Action("DeleteComposite", "Roles",new { id=Model.Id})'" />
+                <input type="button" class="btn btn-outline-primary " style="float:right" value="Agregar Permiso" onclick="location.href='@Url.Action("Agregar", "Roles",new { id=Model.Id})'" />
+                <br /> <br />
+                <input type="button" class="btn btn-outline-primary " style="float:right" value="Volver" onclick="location.href='@Url.Action("Index", "Roles")'" />
+
             </div>
-</div>
+
+            </div>
+        </div>
     </div>
 
 

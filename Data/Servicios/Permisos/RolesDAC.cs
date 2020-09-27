@@ -151,7 +151,7 @@ namespace Data
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
             using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
             {
-                db.AddInParameter(cmd, "@Id", DbType.String, entity.id);
+                db.AddInParameter(cmd, "@Id", DbType.String, entity.Id);
                 db.AddInParameter(cmd, "@name", DbType.String, entity.name);
               
                 db.ExecuteNonQuery(cmd);
@@ -236,6 +236,53 @@ namespace Data
             }
             return roles;
         }
+
+        #endregion
+
+
+        #region ABMComposite
+        public Roles CreateComposite(Roles entity)
+        {
+            const string SQL_STATEMENT = "insert into RolesComposite(ID_CompositeRol,ID_CompositePermiso)values(@ID_CompositeRol,@ID_CompositePermiso)";
+            var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
+            using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
+            {
+                db.AddInParameter(cmd, "@ID_CompositeRol", DbType.String, entity.Id);
+                db.AddInParameter(cmd, "@ID_CompositePermiso", DbType.String, entity.permiso.Id);
+                entity.Id = Convert.ToInt32(db.ExecuteScalar(cmd));
+            }
+
+
+            return entity;
+        }
+        public void UpdateComposite(Roles entity,Roles update)
+        {
+            const string SQL_STATEMENT = "update RolesComposite set ID_CompositePermiso=@ID_CompositePermiso, ID_CompositeRol=@ID_CompositeRol where ID_CompositePermiso=@id and ID_CompositeRol=@idRol";
+
+            var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
+            using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
+            {
+                db.AddInParameter(cmd, "@Id", DbType.Int32, entity.permiso.Id);
+                db.AddInParameter(cmd, "@idRol", DbType.Int32, entity.Id);
+                db.AddInParameter(cmd, "@ID_CompositePermiso", DbType.Int32, update.permiso.Id);
+                db.AddInParameter(cmd, "@ID_CompositeRol", DbType.Int32, update.Id);
+                db.ExecuteNonQuery(cmd);
+            }
+        }
+
+
+        public void DeleteComposite(Roles entity)
+        {
+            const string SQL_STATEMENT = "delete RolesComposite where id_Rol=(select id_Rol from RolesComposite where ID_CompositePermiso=@ID_CompositePermiso and ID_CompositeRol=@ID_CompositeRol)";
+            var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
+            using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
+            {
+                db.AddInParameter(cmd, "@ID_CompositePermiso", DbType.Int32, entity.permiso.Id);
+                db.AddInParameter(cmd, "@ID_CompositeRol", DbType.Int32, entity.Id);
+                db.ExecuteNonQuery(cmd);
+            }
+        }
+
 
         #endregion
     }

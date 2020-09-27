@@ -135,5 +135,75 @@ namespace Negocio
         }
 
         #endregion
+
+        #region ABM Composite
+
+        public Roles CreateComposite(Roles entity)
+        {
+            RolesDAC rolesDAC = new RolesDAC();
+            return rolesDAC.CreateComposite(entity);
+
+        }
+
+        public void UpdateComposite(Roles entity, Roles update)
+        {
+            RolesDAC rolesDAC = new RolesDAC();
+            rolesDAC.UpdateComposite(entity, update);
+        }
+        public void DeleteComposite(Roles entity)
+        {
+            RolesDAC rolesDAC = new RolesDAC();
+            rolesDAC.DeleteComposite(entity);
+        }
+
+
+        public Roles RolesDiponibles(int id)
+        {
+            Roles roles = new Roles();
+            RolesDAC rolesDAC = new RolesDAC();
+            roles = rolesDAC.ReadBy(id);
+            Roles rolesBase = new Roles();
+            PermisoDAC permisoDAC = new PermisoDAC();
+
+            rolesBase.listaRol = rolesDAC.Read();
+            rolesBase.listaRol.AddRange(permisoDAC.Read());
+
+
+            Roles result = new Roles();
+            result= rolesDAC.ReadBy(id);
+            roles.listaRol = ObtenerPermisosORolesDeUnRol(id);
+            
+
+
+            foreach (Roles item in rolesBase.listaRol)
+            {
+                int a = 0;
+
+                foreach (Roles subItem in roles.listaRol)
+                {
+                    if (subItem.Id==item.Id)
+                    {
+                        a = 1;
+                    }
+                   
+                }
+                if (result.Id ==item.Id)
+                {
+                    a = 1;
+                }
+                if (a==0)
+                {
+                    result.listaRol.Add(item);
+                }
+
+
+            }
+
+
+            return result;
+
+        }
+ 
+        #endregion
     }
 }

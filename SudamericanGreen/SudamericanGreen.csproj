@@ -2271,6 +2271,8 @@
     <Content Include="Views\Login\Deslogueo.cshtml" />
     <Content Include="Views\Roles\ErrorPage.cshtml" />
     <Content Include="Views\Roles\VerPermisos.cshtml" />
+    <Content Include="Views\Roles\Agregar.cshtml" />
+    <Content Include="Views\Roles\DeleteComposite.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
