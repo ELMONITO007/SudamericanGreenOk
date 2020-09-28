@@ -18,11 +18,11 @@ namespace Data
             {
                 UsuarioRoles usuarioRoles = new UsuarioRoles();
                 usuarioRoles.usuarios.Id = GetDataValue<int>(dr, "UserId");
-                usuarioRoles.Id = GetDataValue<int>(dr, "Id");
+                usuarioRoles.roles.Id = GetDataValue<int>(dr, "RoleId");
           
 
 
-                usuarioRoles.roles.id = GetDataValue<string>(dr, "RoleId");
+ 
     
                 return usuarioRoles;
             }
@@ -115,14 +115,14 @@ namespace Data
    
 
       
-        public List<UsuarioRoles> ReadByRol(string Id_roles)
+        public List<UsuarioRoles> ReadByRol(int Id_roles)
         {
             const string SQL_STATEMENT = "select * from AspNetUserRoles where RoleId=@RoleId";
             List<UsuarioRoles> result = new List<UsuarioRoles>();
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
             using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
             {
-                db.AddInParameter(cmd, "@RoleId", DbType.String, Id_roles);
+                db.AddInParameter(cmd, "@RoleId", DbType.Int32, Id_roles);
 
                 using (IDataReader dr = db.ExecuteReader(cmd))
                 {
@@ -135,7 +135,26 @@ namespace Data
             }
             return result;
         }
+        public List<UsuarioRoles> ReadByUsuario(int ID_Usuario)
+        {
+            const string SQL_STATEMENT = "select * from AspNetUserRoles where UserId=@RoleId";
+            List<UsuarioRoles> result = new List<UsuarioRoles>();
+            var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
+            using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
+            {
+                db.AddInParameter(cmd, "@RoleId", DbType.Int32, ID_Usuario);
 
+                using (IDataReader dr = db.ExecuteReader(cmd))
+                {
+                    while (dr.Read())
+                    {
+                        UsuarioRoles usuarioRoles = LoadUsuarioRoles(dr);
+                        result.Add(usuarioRoles);
+                    }
+                }
+            }
+            return result;
+        }
         public void Update(UsuarioRoles entity)
         {
             const string SQL_STATEMENT = "update AspNetUserRoles set RoleId=@RoleId where RoleId=@RoleId and UserId=@UserId ";

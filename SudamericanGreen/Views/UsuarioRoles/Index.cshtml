@@ -22,7 +22,7 @@
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Lista de sectores</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Lista de Permisos de un usuario</h6>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -43,20 +43,38 @@
 
                                         @foreach (var item in Model)
                                         {
+                                            string link = "/Roles/VerPermisos/" + @item.roles.Id;
+
+
+
+
                                             <tr role="row" class="odd">
                                                 <td class="sorting_1">
                                                     @Html.DisplayFor(modelItem => item.usuarios.Email)
                                                 </td>
+
                                                 <td class="sorting_1">
-                                                    @Html.DisplayFor(modelItem => item.roles.name)
+
+
+                                                    @if (item.Id == 0)
+
+                                                    {
+                                                        <a href=@link> @Html.DisplayFor(modelItem => item.roles.name)</a>
+                                                    }
+                                                    @if (item.Id == 1)
+                                                    {
+                                                        @Html.DisplayFor(modelItem => item.roles.name)
+                                                    }
+
                                                 </td>
                                                 <td>
-                                                    @Html.ActionLink("Modificar Permiso", "Edit", new { id_Usuario = item.usuarios.Id, id_Roles = item.roles.id }) |
 
-                                                    @Html.ActionLink("Eliminar", "Delete", new { id = item.usuarios.Id, idRol = item.roles.id }) |
-                                                
+                                                    @*@Html.ActionLink("Modificar Permiso", "Edit", new { id_Usuario = item.usuarios.Id, id_Roles = item.roles.id }) |*@
 
-                                                  
+                                                    @*@Html.ActionLink("Eliminar", "Delete", new { id = item.usuarios.Id, idRol = item.roles.id }) |*@
+
+
+
 
 
                                                 </td>
@@ -72,13 +90,13 @@
                             </div>
                             @foreach (var item in Model)
                             {
-                                <div>
-                                    <input type="button" class="btn btn-outline-primary " style="float:left" value="Agregar permiso" onclick="location.href='@Url.Action("Create", "UsuarioRoles", new { id =item.usuarios.Id})'" />
+                                <input type="button" class="btn btn-outline-primary " style="float:right" value="Agregar permiso" onclick="location.href='@Url.Action("Create", "UsuarioRoles", new { id =item.usuarios.Id})'" />
+                                <input type="button" class="btn btn-outline-primary " style="float:left" value="Volver" onclick="location.href='@Url.Action("index", "Usuario", new { id =item.usuarios.Id})'" />
 
-                                </div>
                                 break;
                             }
                         </div>
+                        
                     </div>
                 </div>
             </div>

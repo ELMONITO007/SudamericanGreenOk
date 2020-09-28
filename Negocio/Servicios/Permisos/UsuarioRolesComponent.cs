@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Data;
 using Entities;
+using Negocio.Servicios.Permisos;
+
 namespace Negocio
 {
     public class UsuarioRolesComponent : Component<UsuarioRoles>
@@ -52,10 +54,39 @@ namespace Negocio
         {
             List<UsuarioRoles> result = default(List<UsuarioRoles>);
             var usuarioRolesDAC = new UsuarioRolesDAC();
-            //result = usuarioRolesDAC.ReadByRol(id_Usuario);
-            return result;
+            List<UsuarioRoles> roles =new List<UsuarioRoles>();
+
+            result = usuarioRolesDAC.ReadByUsuario(id_Usuario);
+            foreach (var item in result)
+            {
+                UsuarioRoles roles1 = new UsuarioRoles();
+                             UsuariosComponent usuarios = new UsuariosComponent();
+               
+                RolesDAC rolesDAC = new RolesDAC();
+
+                if (rolesDAC.VerificarSiEsUnPermiso(item.roles.Id) != null)
+                {
+                    roles1.Id = 1;
+                    PermisoComponent permisoComponent = new PermisoComponent();
+                    roles1.roles = permisoComponent.ReadBy(item.roles.Id);
+                }
+                else
+                {
+                    RolesComponent rolesComponent = new RolesComponent();
+                    roles1.roles = rolesComponent.ReadBy(item.roles.Id);
+                    roles1.Id = 0;
+
+                }
+                roles1.usuarios = usuarios.ReadBy(item.usuarios.Id);
+               
+
+                
+
+                roles.Add(roles1);
+            }
+            return roles;
         }
-        public List<UsuarioRoles> ReadByRoles(string id_Roles)
+        public List<UsuarioRoles> ReadByRoles(int id_Roles)
         {
             List<UsuarioRoles> result = default(List<UsuarioRoles>);
             var usuarioRolesDAC = new UsuarioRolesDAC();
@@ -77,7 +108,11 @@ namespace Negocio
             List<Roles> roles = new List<Roles>();
             roles = rolesComponent.Read();
 
+            PermisoComponent permisoComponent = new PermisoComponent();
+            List<Permiso> permisos = new List<Permiso>();
+            permisos = permisoComponent.Read();
 
+            roles.AddRange(permisos);
 
             List<UsuarioRoles> usuarioRoles = new List<UsuarioRoles>();
             usuarioRoles = ReadByUsuario(id_Usuario);
@@ -90,7 +125,7 @@ namespace Negocio
 
                 foreach (UsuarioRoles itemRoles in usuarioRoles)
                 {
-                    if (item.id==itemRoles.roles.id)
+                    if (item.Id==itemRoles.roles.Id)
                     {
                         aux = 1;
                         break;

@@ -20,13 +20,7 @@ namespace Evaluaciones.Controllers
             UsuarioRolesComponent usuarioRolesComponent = new UsuarioRolesComponent();
             List<UsuarioRoles> usuarioRoles = new List<UsuarioRoles>();
             usuarioRoles = usuarioRolesComponent.ReadByUsuario(id);
-            if (usuarioRoles.Count==0)
-            {
-                UsuarioRoles usuario = new UsuarioRoles();
-                usuario.usuarios.Id = id;
-                usuarioRoles.Add(usuario);
-                    
-            }
+            
 
             return View(usuarioRoles);
         }
@@ -46,7 +40,7 @@ namespace Evaluaciones.Controllers
             return View(usuarioRolesComponent.ReadByUsuario(Id));
         }
         //[AuthorizerUser(_roles: "Administrador,RRHH")]
-        public ActionResult Roles(String Id)
+        public ActionResult Roles(int Id)
         {
             UsuarioRolesComponent usuarioRolesComponent = new UsuarioRolesComponent();
             return View(usuarioRolesComponent.ReadByRoles(Id));

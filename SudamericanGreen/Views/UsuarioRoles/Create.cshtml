@@ -7,42 +7,43 @@
 
 <link href="~/Content/modern-business.css" rel="stylesheet" />
 
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        <h4>Agrega un Permiso al usuario<i>"  @Html.DisplayFor(model => model.UserName) "</i> </h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-       
+    <div class="d-flex flex-column" style="max-width:40%">
+        <div class="container-fluid">
+            <div class="card shadow mb-4" style="min-width:550px">
+                <div class=" card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Agrega un Permiso al usuario<i>"@Html.DisplayFor(model => model.UserName)"</i></h6>
 
-        <div class="form-group">
-            
-            <div class="col-md-10">
-                <h5 class="text-justify">Roles Disponibles</h5>
 
-                @Html.DropDownListFor(model => model.id_Rol, (IEnumerable<SelectListItem>)ViewBag.RolesLista, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        <div class="form-group">
-           
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.id_Usuario, new { htmlAttributes = new { style = "display:none" } })
+                </div>
+                <div class="card-body">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-            </div>
-        </div>
 
-       
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="button" class="BotonVerde " style="float:right" value="Volver" onclick="location.href='@Url.Action("Index", "UsuarioRoles",new {id=Model.id_Usuario })'" />
-                <input type="submit" value="Agregar" class="BotonVerde" />
+                    <h5 class="text-justify">Permisos y roles disponibles</h5>
+
+                    @Html.DropDownListFor(model => model.id_Rol, (IEnumerable<SelectListItem>)ViewBag.RolesLista, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
+                    <br />
+                  
+                </div>
+
+
+                <input type="button" class="btn btn-outline-primary " style="float:right" value="Volver" onclick="location.href='@Url.Action("Index", "UsuarioRoles",new { id=Model.id_Usuario})'" />
+
+                <br />
+
+                <input type="submit" value="Crear" class="btn btn-outline-info" />
+
             </div>
         </div>
     </div>
 }
+
 
