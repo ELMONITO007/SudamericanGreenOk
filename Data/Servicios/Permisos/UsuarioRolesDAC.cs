@@ -57,8 +57,8 @@ namespace Data
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
             using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
             {
-                db.AddInParameter(cmd, "@RoleId", DbType.Int32, entity.usuarios.Id);
-                db.AddInParameter(cmd, "@UserId", DbType.String, entity.roles.id);
+                db.AddInParameter(cmd, "@RoleId", DbType.Int32, entity.roles.Id);
+                db.AddInParameter(cmd, "@UserId", DbType.Int32, entity.usuarios.Id);
                 db.ExecuteNonQuery(cmd);
             }
         }

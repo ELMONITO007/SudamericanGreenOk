@@ -1,13 +1,11 @@
-﻿@model IEnumerable<Entities.UsuarioRoles>
+﻿@model Entities.UsuarioRoles
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 
-
 <link href="~/Content/modern-business.css" rel="stylesheet" />
-
 
 <div id="content-wrapper" class="d-flex flex-column">
 
@@ -22,7 +20,7 @@
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Lista de Permisos de un usuario</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Lista de Permisos del usuario <i>@Model.usuarios.Email</i></h6>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -32,8 +30,8 @@
                                 <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
                                     <thead>
                                         <tr role="row">
-                                            <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 103px;">Email</th>
-                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 162px;">Permiso</th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 103px;">Permiso</th>
+
 
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 162px;">Acciones</th>
                                         </tr>
@@ -41,62 +39,56 @@
 
                                     <tbody>
 
-                                        @foreach (var item in Model)
+                                        @foreach (var item in Model.listaRoles)
                                         {
+
                                             string link = "/Roles/VerPermisos/" + @item.roles.Id;
 
+                                      <tr role = "row" class="odd">
+                                        
+
+                                        <td class="sorting_1">
+
+
+                                            @if (item.Id == 0)
+
+                                            {
+                                                <a href = @link > @Html.DisplayFor(modelItem => item.roles.name) </a >
+                                            }
+                                            @if (item.Id == 1)
+                                            {
+                                                @Html.DisplayFor(modelItem => item.roles.name)
+                                            }
+
+                                        </td>
+                                        <td>
+
+                                            @Html.ActionLink("Eliminar", "Delete", new { id_Usuario = item.usuarios.Id, id_Roles = item.roles.Id })
+
+
+                                        </td>
+
+
+                                      </tr>
 
 
 
-                                            <tr role="row" class="odd">
-                                                <td class="sorting_1">
-                                                    @Html.DisplayFor(modelItem => item.usuarios.Email)
-                                                </td>
-
-                                                <td class="sorting_1">
-
-
-                                                    @if (item.Id == 0)
-
-                                                    {
-                                                        <a href=@link> @Html.DisplayFor(modelItem => item.roles.name)</a>
-                                                    }
-                                                    @if (item.Id == 1)
-                                                    {
-                                                        @Html.DisplayFor(modelItem => item.roles.name)
-                                                    }
-
-                                                </td>
-                                                <td>
-
-                                                    @*@Html.ActionLink("Modificar Permiso", "Edit", new { id_Usuario = item.usuarios.Id, id_Roles = item.roles.id }) |*@
-
-                                                    @*@Html.ActionLink("Eliminar", "Delete", new { id = item.usuarios.Id, idRol = item.roles.id }) |*@
+                                    }
 
 
 
 
 
-                                                </td>
-
-
-                                            </tr>
-                                        }
-
-
-
-                                    </tbody>
-                                </table>
+                                       </tbody>
+                                    </table>
                             </div>
-                            @foreach (var item in Model)
-                            {
-                                <input type="button" class="btn btn-outline-primary " style="float:right" value="Agregar permiso" onclick="location.href='@Url.Action("Create", "UsuarioRoles", new { id =item.usuarios.Id})'" />
-                                <input type="button" class="btn btn-outline-primary " style="float:left" value="Volver" onclick="location.href='@Url.Action("index", "Usuario", new { id =item.usuarios.Id})'" />
 
-                                break;
-                            }
+                            <input type="button" class="btn btn-outline-primary " style="float:right" value="Agregar permiso" onclick="location.href='@Url.Action("Create", "UsuarioRoles", new { id =Model.usuarios.Id})'" />
+                            <input type="button" class="btn btn-outline-primary " style="float:left" value="Volver" onclick="location.href='@Url.Action("index", "Usuario", new { id =Model.usuarios.Id})'" />
+
+
                         </div>
-                        
+
                     </div>
                 </div>
             </div>

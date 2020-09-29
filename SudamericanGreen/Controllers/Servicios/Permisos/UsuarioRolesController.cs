@@ -7,21 +7,22 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Evaluaciones_Tecnicas.Filter;
+using Negocio.Servicios.Permisos;
 
 namespace Evaluaciones.Controllers
 {
-    //[Authorize(Roles = "Administrador")]//para entrar en admin debe estar logueado y  asignarle el rol
+   [Authorize(Roles = "Administrador")]//para entrar en admin debe estar logueado y  asignarle el rol
     public class UsuarioRolesController : Controller
     {
         // GET: UsuarioRoles
-        //[AuthorizerUser(_roles: "Administrador,RRHH")]
+        [AuthorizerUser(_roles: "Administrador,RRHH")]
         public ActionResult Index(int id)
         {
             UsuarioRolesComponent usuarioRolesComponent = new UsuarioRolesComponent();
-            List<UsuarioRoles> usuarioRoles = new List<UsuarioRoles>();
-            usuarioRoles = usuarioRolesComponent.ReadByUsuario(id);
-            
-
+          UsuarioRoles usuarioRoles = new UsuarioRoles();
+            usuarioRoles.listaRoles = usuarioRolesComponent.ReadByUsuario(id);
+            UsuariosComponent usuarios = new UsuariosComponent();
+            usuarioRoles.usuarios = usuarios.ReadBy(id);
             return View(usuarioRoles);
         }
 
@@ -50,22 +51,24 @@ namespace Evaluaciones.Controllers
         //[AuthorizerUser(_roles: "Administrador,RRHH")]
         public ActionResult Create(int id)
         {
-            UsuarioRolesModels usuarioRoles = new UsuarioRolesModels();
-            List<UsuarioRolesModels> result = new List<UsuarioRolesModels>();
-            result = usuarioRoles.obtenerRolesDisponiblesDelUsuario(id);
-            result.Select(y =>
+            UsuarioRoles roles = new UsuarioRoles();
+            UsuarioRolesComponent usuarioRoles = new UsuarioRolesComponent();
+
+            roles.listaRoles = usuarioRoles.obtenerRolesDisponiblesDelUsuario(id);
+            roles.listaRoles.Select(y =>
                             new
                             {
-                                id_Rol = y.id_Rol,
-                                name = y.name
+                                y.roles.id,
+                                    y.roles.name
                             });
 
-            ViewBag.RolesLista = new SelectList(result, "id_Rol", "name");
+            ViewBag.RolesLista = new SelectList(roles.listaRoles, "roles.id", "roles.name");
+
+            UsuariosComponent usuarios = new UsuariosComponent();
+            roles.usuarios = usuarios.ReadBy(id);
 
 
-
-
-            return View(usuarioRoles.ReadyBy(id));
+            return View(roles);
         }
 
         // POST: UsuarioRoles/Create
@@ -77,8 +80,8 @@ namespace Evaluaciones.Controllers
             {
                 UsuarioRolesComponent usuarioRolesComponent = new UsuarioRolesComponent();
                 UsuarioRoles usuarioRoles = new UsuarioRoles();
-                usuarioRoles.roles.id = collection.Get("id_Rol");
-                usuarioRoles.usuarios.Id =int.Parse( collection.Get("id_Usuario"));
+                usuarioRoles.roles.id = collection.Get("roles.name");
+                usuarioRoles.usuarios.Id =int.Parse( collection.Get("usuarios.Id"));
                 usuarioRolesComponent.Create(usuarioRoles);
                 // TODO: Add insert logic here
 
@@ -144,21 +147,40 @@ namespace Evaluaciones.Controllers
 
         // GET: UsuarioRoles/Delete/5
         //[AuthorizerUser(_roles: "Administrador,RRHH")]
-        public ActionResult Delete(string id_Usuario, String id_Roles)
+        public ActionResult Delete(int id_Usuario, int id_Roles)
         {
-            return View();
+            UsuarioRoles usuarioRoles = new UsuarioRoles();
+            UsuariosComponent usuarios = new UsuariosComponent();
+            RolesComponent rolesComponent = new RolesComponent();
+            
+            if (rolesComponent.ReadBy(id_Roles) is null)
+            {
+                PermisoComponent permisoComponent = new PermisoComponent();
+                usuarioRoles.roles = permisoComponent.ReadBy(id_Roles);
+            }
+            else
+            {
+                usuarioRoles.roles = rolesComponent.ReadBy(id_Roles);
+            }
+            usuarioRoles.usuarios = usuarios.ReadBy(id_Usuario);
+
+            return View(usuarioRoles);
         }
 
         // POST: UsuarioRoles/Delete/5
         //[AuthorizerUser(_roles: "Administrador,RRHH")]
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete( FormCollection collection)
         {
             try
             {
                 // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
+                UsuarioRoles roles = new UsuarioRoles();
+                UsuarioRolesComponent usuarioRolesComponent = new UsuarioRolesComponent();
+                roles.usuarios.Id = int.Parse(collection.Get("usuarios.Id"));
+                roles.roles.Id = int.Parse(collection.Get("roles.Id"));
+                usuarioRolesComponent.Delete(roles);
+                return RedirectToAction("Index",new { id=roles.usuarios.Id});
             }
             catch
             {
