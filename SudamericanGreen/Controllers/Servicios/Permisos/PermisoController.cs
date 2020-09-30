@@ -1,4 +1,5 @@
 ﻿using Entities;
+using Evaluaciones_Tecnicas.Filter;
 using Negocio.Servicios.Permisos;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ namespace Evaluaciones_Tecnicas.Controllers
 {
     public class PermisoController : Controller
     {
-        //
+        [AuthorizerUser(_roles: "Administrador")]
         // GET: /Permiso/
         public ActionResult Index()
         {
@@ -20,7 +21,7 @@ namespace Evaluaciones_Tecnicas.Controllers
             return View(permisoComponent.Read());
         }
 
-        //
+        [AuthorizerUser(_roles: "Administrador")]
         // GET: /Permiso/Details/5
         public ActionResult ErroPage(String id)
         {
@@ -28,14 +29,14 @@ namespace Evaluaciones_Tecnicas.Controllers
             return View(permisoComponent.ReadBy(id));
         }
 
-        //
+        [AuthorizerUser(_roles: "Administrador")]
         // GET: /Permiso/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        //
+        [AuthorizerUser(_roles: "Administrador")]
         // POST: /Permiso/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)
@@ -63,14 +64,14 @@ namespace Evaluaciones_Tecnicas.Controllers
             }
         }
 
-        //
+        [AuthorizerUser(_roles: "Administrador")]
         // GET: /Permiso/Edit/5
         public ActionResult Edit(int id)
         {
             PermisoComponent permisoComponent = new PermisoComponent();
             return View(permisoComponent.ReadBy(id));
         }
-
+        [AuthorizerUser(_roles: "Administrador")]
         //
         // POST: /Permiso/Edit/5
         [HttpPost]
@@ -100,7 +101,7 @@ namespace Evaluaciones_Tecnicas.Controllers
                 return View();
             }
         }
-
+        [AuthorizerUser(_roles: "Administrador")]
         //
         // GET: /Permiso/Delete/5
         public ActionResult Delete(int id)
@@ -108,7 +109,7 @@ namespace Evaluaciones_Tecnicas.Controllers
             PermisoComponent permisoComponent = new PermisoComponent();
             return View(permisoComponent.ReadBy(id));
         }
-
+        [AuthorizerUser(_roles: "Administrador")]
         //
         // POST: /Permiso/Delete/5
         [HttpPost]

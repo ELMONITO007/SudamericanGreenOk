@@ -27,20 +27,19 @@ namespace Evaluaciones.Controllers
         }
 
         // GET: UsuarioRoles/Details/5
-        /* [AuthorizerUser(_roles: "Administrador,RRHH")]*/
+        [AuthorizerUser(_roles: "Administrador")]
         public ActionResult Details(int id,string idRol)
         {
             UsuarioRolesComponent usuarioRolesComponent = new UsuarioRolesComponent();
             return View(usuarioRolesComponent.ReadBy(id));
         }
-
-        //[AuthorizerUser(_roles: "Administrador,RRHH")]
+        [AuthorizerUser(_roles: "Administrador")]
         public ActionResult Usuario (int Id)
         {
             UsuarioRolesComponent usuarioRolesComponent = new UsuarioRolesComponent();
             return View(usuarioRolesComponent.ReadByUsuario(Id));
         }
-        //[AuthorizerUser(_roles: "Administrador,RRHH")]
+        [AuthorizerUser(_roles: "Administrador")]
         public ActionResult Roles(int Id)
         {
             UsuarioRolesComponent usuarioRolesComponent = new UsuarioRolesComponent();
@@ -48,7 +47,7 @@ namespace Evaluaciones.Controllers
         }
 
         // GET: UsuarioRoles/Create
-        //[AuthorizerUser(_roles: "Administrador,RRHH")]
+        [AuthorizerUser(_roles: "Administrador")]
         public ActionResult Create(int id)
         {
             UsuarioRoles roles = new UsuarioRoles();
@@ -72,7 +71,7 @@ namespace Evaluaciones.Controllers
         }
 
         // POST: UsuarioRoles/Create
-        //[AuthorizerUser(_roles: "Administrador,RRHH")]
+        [AuthorizerUser(_roles: "Administrador")]
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
@@ -94,7 +93,7 @@ namespace Evaluaciones.Controllers
         }
 
         // GET: UsuarioRoles/Edit/5
-        //[AuthorizerUser(_roles: "Administrador,RRHH")]
+        [AuthorizerUser(_roles: "Administrador")]
         public ActionResult Edit(int id_Usuario, int id_Roles)
         {
             try
@@ -123,7 +122,7 @@ namespace Evaluaciones.Controllers
         }
 
         // POST: UsuarioRoles/Edit/5
-        //[AuthorizerUser(_roles: "Administrador,RRHH")]
+        [AuthorizerUser(_roles: "Administrador")]
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -146,7 +145,7 @@ namespace Evaluaciones.Controllers
         }
 
         // GET: UsuarioRoles/Delete/5
-        //[AuthorizerUser(_roles: "Administrador,RRHH")]
+        [AuthorizerUser(_roles: "Administrador")]
         public ActionResult Delete(int id_Usuario, int id_Roles)
         {
             UsuarioRoles usuarioRoles = new UsuarioRoles();
@@ -168,7 +167,7 @@ namespace Evaluaciones.Controllers
         }
 
         // POST: UsuarioRoles/Delete/5
-        //[AuthorizerUser(_roles: "Administrador,RRHH")]
+        [AuthorizerUser(_roles: "Administrador")]
         [HttpPost]
         public ActionResult Delete( FormCollection collection)
         {

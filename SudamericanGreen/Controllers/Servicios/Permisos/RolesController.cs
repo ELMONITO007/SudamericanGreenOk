@@ -22,7 +22,7 @@ namespace Evaluaciones.Controllers
         }
 
         // GET: Roles/Details/5
-        //[AuthorizerUser(_roles: "Administrador")]
+        [AuthorizerUser(_roles: "Administrador")]
         public ActionResult Details(int id)
         {
             RolesComponent roles = new RolesComponent();
@@ -30,14 +30,14 @@ namespace Evaluaciones.Controllers
         }
 
         // GET: Roles/Create
-        //[AuthorizerUser(_roles: "Administrador")]
+        [AuthorizerUser(_roles: "Administrador")]
         public ActionResult Create()
         {
             return View();
         }
 
         // POST: Roles/Create
-        //[AuthorizerUser(_roles: "Administrador")]
+        [AuthorizerUser(_roles: "Administrador")]
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
@@ -62,7 +62,7 @@ namespace Evaluaciones.Controllers
                 return View();
             }
         }
-
+        [AuthorizerUser(_roles: "Administrador")]
         public ActionResult VerPermisos(int id)
         {
             RolesComponent roles = new RolesComponent();
@@ -72,9 +72,9 @@ namespace Evaluaciones.Controllers
             roles.ObtenerComposite(roles1);
             return View(roles1);
         }
-       
+
         // GET: Roles/Edit/5
-        //[AuthorizerUser(_roles: "Administrador")]
+        [AuthorizerUser(_roles: "Administrador")]
         public ActionResult Edit(int id)
         {
             RolesComponent rolesComponent = new RolesComponent();
@@ -82,7 +82,7 @@ namespace Evaluaciones.Controllers
         }
 
         // POST: Roles/Edit/5
-        //[AuthorizerUser(_roles: "Administrador")]
+        [AuthorizerUser(_roles: "Administrador")]
         [HttpPost]
         public ActionResult Edit(string id, FormCollection collection)
         {
@@ -114,7 +114,7 @@ namespace Evaluaciones.Controllers
         }
 
         // GET: Roles/Delete/5
-        //[AuthorizerUser(_roles: "Administrador")]
+        [AuthorizerUser(_roles: "Administrador")]
         public ActionResult Delete(int id)
         {
 
@@ -140,7 +140,7 @@ namespace Evaluaciones.Controllers
             }
         }
 
-
+        [AuthorizerUser(_roles: "Administrador")]
 
         public ActionResult ErrorPage(String id)
         {
@@ -148,7 +148,7 @@ namespace Evaluaciones.Controllers
             return View(roles.ReadBy(id));
         }
         #region ABM COmposite
-
+        [AuthorizerUser(_roles: "Administrador")]
         public ActionResult Agregar(int id)
         {
             RolesComponent rolesComponent = new RolesComponent();
@@ -172,7 +172,7 @@ namespace Evaluaciones.Controllers
         }
 
         // POST: Roles/Create
-        //[AuthorizerUser(_roles: "Administrador")]
+        [AuthorizerUser(_roles: "Administrador")]
         [HttpPost]
         public ActionResult Agregar(FormCollection collection)
         {
@@ -195,7 +195,7 @@ namespace Evaluaciones.Controllers
                 return View();
             }
         }
-
+        [AuthorizerUser(_roles: "Administrador")]
         public ActionResult DeleteComposite(int id)
         {
 
@@ -217,7 +217,7 @@ namespace Evaluaciones.Controllers
         }
 
         // POST: Roles/Delete/5
-        //[AuthorizerUser(_roles: "Administrador")]
+        [AuthorizerUser(_roles: "Administrador")]
         [HttpPost]
         public ActionResult DeleteComposite(FormCollection collection)
         {

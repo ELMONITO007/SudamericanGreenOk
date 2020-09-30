@@ -1,4 +1,5 @@
 ﻿using Entities;
+using Evaluaciones_Tecnicas.Filter;
 using Negocio.Servicios;
 using System;
 using System.Collections.Generic;
@@ -10,19 +11,20 @@ namespace Evaluaciones_Tecnicas.Controllers.Servicios
 {
     public class BackupController : Controller
     {
+        [AuthorizerUser(_roles: "Administrador")]
         // GET: Backup
         public ActionResult Index()
         {
             BackupComponent backupComponent = new BackupComponent();
             return View(backupComponent.Read());
         }
-
+        [AuthorizerUser(_roles: "Administrador")]
         // GET: Backup/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
-
+        [AuthorizerUser(_roles: "Administrador")]
         // GET: Backup/Create
         public ActionResult Create()
         {
@@ -30,7 +32,7 @@ namespace Evaluaciones_Tecnicas.Controllers.Servicios
             backupComponent.Create();
             return RedirectToAction("index");
         }
-
+        [AuthorizerUser(_roles: "Administrador")]
         // POST: Backup/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)
@@ -47,14 +49,14 @@ namespace Evaluaciones_Tecnicas.Controllers.Servicios
                 return View();
             }
         }
-
+        [AuthorizerUser(_roles: "Administrador")]
         // GET: Backup/Edit/5
         public ActionResult Restore(int id)
         {
             BackupComponent backupComponent = new BackupComponent();
             return View(backupComponent.ReadBy(id));
         }
-
+        [AuthorizerUser(_roles: "Administrador")]
         // POST: Backup/Edit/5
         [HttpPost]
         public ActionResult Restore(int id, FormCollection collection)
@@ -73,14 +75,14 @@ namespace Evaluaciones_Tecnicas.Controllers.Servicios
                 return View();
             }
         }
-
+        [AuthorizerUser(_roles: "Administrador")]
         // GET: Backup/Delete/5
         public ActionResult Delete(int id)
         {
             BackupComponent backupComponent = new BackupComponent();
             return View(backupComponent.ReadBy(id));
         }
-
+        [AuthorizerUser(_roles: "Administrador")]
         // POST: Backup/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
