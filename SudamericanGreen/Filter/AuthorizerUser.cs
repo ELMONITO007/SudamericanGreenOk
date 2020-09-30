@@ -11,7 +11,7 @@ namespace Evaluaciones_Tecnicas.Filter
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = false)]
     public class AuthorizerUser : AuthorizeAttribute
     {
-        private Usuarios usuario;
+        private UsuarioRoles usuario =new UsuarioRoles();
         private string rolesUsuario;
         public AuthorizerUser(string _roles = "")
         {
@@ -57,12 +57,12 @@ namespace Evaluaciones_Tecnicas.Filter
             try
             {
 
+                usuario = new UsuarioRoles();
 
 
+               
 
-
-
-                usuario = (Usuarios)HttpContext.Current.Session["userName"];
+                usuario.usuarios = (Usuarios)HttpContext.Current.Session["userName"];
                 UsuarioRolesComponent usuarioRolesComponent = new UsuarioRolesComponent();
                 bool result = usuarioRolesComponent.VerificarSiTieneElRol(usuario, GenerarListaRoles());
                 if (!result)
@@ -75,10 +75,10 @@ namespace Evaluaciones_Tecnicas.Filter
 
 
             }
-            catch (Exception)
+            catch (Exception e)
             {
 
-                throw;
+               
             }
 
 

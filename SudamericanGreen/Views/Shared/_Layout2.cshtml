@@ -36,11 +36,11 @@
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-            <br />
-            <!-- Sidebar - Brand -->
-            @*<div style="color:wheat">
+            @*<br />
+             Sidebar - Brand 
+            <div style="color:wheat">
                    @{
-                       string user = Convert.ToString(Session["UserName"]);
+                       string user = Usuarios(Session["UserName"]);
                                    <h2>Bienvenido: @user</h2>
 
                     }
@@ -201,11 +201,15 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">
-                                    @*@{  Usuarios usuario = new Usuarios();
-                        usuario = (Usuarios)Session["UserName"];
+                                    @{ Usuarios usuario = new Usuarios();
+                                        usuario = (Usuarios)Session["UserName"];
+                                        string user = "";
+                                        if (usuario.Email != "")
+                                        {
+                                            user = usuario.Email;
+                                        }
 
-                        string user = usuario.Email;
-            @user }*@
+                                        @user }
                                 </span>
 
 
@@ -213,11 +217,11 @@
                             
                             </a>
                             <!-- Dropdown - User Information -->
-                            @*@{
+                            @{
                                     Usuarios unUsuario = new Usuarios();
                                     unUsuario = (Usuarios)Session["UserName"];
                                     string ruta = "/login/perfil/?email="+unUsuario.Email;
-                                }*@
+                                }
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
 
 

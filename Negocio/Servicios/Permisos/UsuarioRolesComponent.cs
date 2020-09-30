@@ -11,6 +11,7 @@ namespace Negocio
 {
     public class UsuarioRolesComponent : Component<UsuarioRoles>
     {
+        UsuarioRoles listaUsuarioRoles = new UsuarioRoles();
         public override UsuarioRoles Create(UsuarioRoles objeto)
         {
             UsuarioRoles result = default(UsuarioRoles);
@@ -154,26 +155,38 @@ namespace Negocio
 
 
 
-        public  bool VerificarSiTieneElRol(Usuarios usuarios,List<Roles> roles)
+        public  bool VerificarSiTieneElRol(UsuarioRoles entity,List<Roles> roles)
 
 
         {
             bool aux = false;
-            if (usuarios is null)
+            if (entity.usuarios is null)
             {
                 aux = false;
             }
             else
             {
 
-           
-            Usuarios unUsuario = new Usuarios();
+                UsuarioRoles usuarioRoles = new UsuarioRoles();
+
+                UsuarioRoles result = new UsuarioRoles();
+         
             UsuarioDac usuarioDac = new UsuarioDac();
-            unUsuario = usuarioDac.ReadByEmail(usuarios.Email);
-            List<UsuarioRoles> usuarioRoles = new List<UsuarioRoles>();
-            usuarioRoles = obtenerRolesDisponiblesDelUsuario(unUsuario.Id);
+                Roles unRol = new Roles();
+                RolesComponent rolesComponent = new RolesComponent();
+                usuarioRoles.usuarios = usuarioDac.ReadByEmail(entity.usuarios.Email);
           
-            if (usuarioRoles.Count == 0)
+            usuarioRoles.listaRoles = ReadByUsuario(usuarioRoles.usuarios.Id);
+                
+
+
+                foreach (var item in usuarioRoles.listaRoles)
+                {
+                    result.roles.listaRol.Add(rolesComponent.ObtenerComposite(item.roles));
+                }
+                
+
+                if (usuarioRoles.listaRoles.Count == 0)
             {
                 aux = false;
             }
@@ -188,9 +201,9 @@ namespace Negocio
                     {
                         break;
                     }
-                foreach (UsuarioRoles subItem in usuarioRoles)
+                foreach (String subItem in ObtenerlistaPermisos(result.roles))
                 {
-                        if (subItem.roles.name==item.name)
+                        if (subItem==item.name)
                         {
                             aux = true;
                             break;
@@ -206,6 +219,39 @@ namespace Negocio
 
 
         }
+        List<string> result = new List<string>();
+        public List<string> ObtenerlistaPermisos(Roles roles)
+        {
+         
+
+            foreach (Roles item in roles.listaRol)
+            {
+
+                if (item.listaRol.Count==0)
+                {
+                    result.Add(item.name);
+                }
+                else if (item.listaRol.Count != 0)
+                {
+                    result.Add(item.name);
+                    foreach (var subItem in item.listaRol)
+                    {
+                        result.Add(subItem.name);
+                    }
+                }
+
+
+            }
+
+
+
+            return result;
+
+
+        }
+
+
+       
 
 
     }

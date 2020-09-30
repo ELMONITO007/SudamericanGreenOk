@@ -15,7 +15,7 @@ namespace Evaluaciones.Controllers
     public class UsuarioRolesController : Controller
     {
         // GET: UsuarioRoles
-        [AuthorizerUser(_roles: "Administrador,RRHH")]
+        [AuthorizerUser(_roles: "Administrador")]
         public ActionResult Index(int id)
         {
             UsuarioRolesComponent usuarioRolesComponent = new UsuarioRolesComponent();

@@ -62,9 +62,13 @@ namespace Evaluaciones.Controllers
                     LoginComponent loginComponent = new LoginComponent();
                     LoginError loginError = new LoginError();
                     loginError = loginComponent.VerificarLogin(usuarios);
+
                     if (loginError.error == "")
                     {
-                        Session["UserName"] = usuarios;
+                    Usuarios usuarios1 = new Usuarios();
+                    UsuariosComponent usuariosComponent = new UsuariosComponent();
+                    usuarios1 = usuariosComponent.ReadByEmail(usuarios.Email);
+                        Session["UserName"] = usuarios1;
                        
 
 
