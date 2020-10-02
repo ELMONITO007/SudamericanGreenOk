@@ -91,6 +91,25 @@ namespace Data
             }
             return backups;
         }
+        public Backups ReadBy()
+        {
+            const string SQL_STATEMENT = "select top 1 * from [dbo].[Backup] order by ID_Backup desc";
+            Backups backups = null;
+
+            var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
+            using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
+            {
+                
+                using (IDataReader dr = db.ExecuteReader(cmd))
+                {
+                    if (dr.Read())
+                    {
+                        backups = Load(dr);
+                    }
+                }
+            }
+            return backups;
+        }
         public Backups ReadBy(string id)
         {
             const string SQL_STATEMENT = "select * from Backup where activo=1 and id=@Id";
@@ -114,24 +133,41 @@ namespace Data
         {
             throw new NotImplementedException();
         }
-        public Backups Restore(int id)
+        public void Restore(Backups entity)
         {
-            const string SQL_STATEMENT = "select * from Backup where activo=1 and id=@Id";
-            Backups backups = null;
+            const string SQL_STATEMENT = "restore database  GreenElectric from disk=@path";
+           
 
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
             using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
             {
-                db.AddInParameter(cmd, "@Id", DbType.Int32, id);
-                using (IDataReader dr = db.ExecuteReader(cmd))
-                {
-                    if (dr.Read())
-                    {
-                        backups = Load(dr);
-                    }
-                }
+
+                db.AddInParameter(cmd, "@path", DbType.String, entity.Path);
+
+           
+
+                db.ExecuteNonQuery(cmd);
             }
-            return backups;
+
         }
+
+
+        public void CreateBackup(Backups entity)
+        {
+            const string SQL_STATEMENT = "backup database GreenElectric to disk= @path WiTH Format,name=@nombre";
+            
+            var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
+            using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
+            {
+               
+                db.AddInParameter(cmd, "@path", DbType.String, entity.Path);
+
+                db.AddInParameter(cmd, "@nombre", DbType.String, entity.Nombre);
+
+                db.ExecuteNonQuery(cmd);
+            }
+          
+        }
+
     }
 }

@@ -15,6 +15,6 @@ namespace Entities
         public string Nombre { get; set; }
         public string Fecha { get; set; }
         public override int Id { get ; set ; }
-
+        public string Path { get; set; }
     }
 }

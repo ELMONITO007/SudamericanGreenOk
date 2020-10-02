@@ -37,9 +37,6 @@ namespace Negocio
 
         }
 
-        public void Login(Usuarios usuarios)
-        { 
-        
-        }
+       
     }
 }

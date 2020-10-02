@@ -2013,6 +2013,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Servicios\BackupController.cs" />
     <Compile Include="Controllers\Servicios\BitacoraController.cs" />
+    <Compile Include="Controllers\Servicios\DVVController.cs" />
     <Compile Include="Controllers\Servicios\LoginController.cs" />
     <Compile Include="Controllers\Servicios\PDFController.cs" />
     <Compile Include="Controllers\Servicios\Permisos\PermisoController.cs" />
@@ -2287,6 +2288,7 @@
     <Folder Include="Controllers\Informes\" />
     <Folder Include="Imagenes\" />
     <Folder Include="PDF\" />
+    <Folder Include="Views\DVV\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Entities\Entities.csproj">

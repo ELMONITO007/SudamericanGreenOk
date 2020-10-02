@@ -8,6 +8,7 @@ using System.Linq;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Hosting;
 
 namespace Negocio.Servicios
 {
@@ -16,30 +17,32 @@ namespace Negocio.Servicios
         public static void BackupDatabase(Backups backup)
         {
 
-            ServerConnection con = new ServerConnection(@"DESKTOP-VDU4AC0\SQLEXPRESS02");
-            Server server = new Server(con);
-            Backup source = new Backup();
-            source.Action = BackupActionType.Database;
-            source.Database = "GreenElectric";
-            string backUpFile = backup.Nombre;
-            BackupDeviceItem destination = new BackupDeviceItem(backUpFile, DeviceType.File);
-            source.Devices.Add(destination);
-            source.SqlBackup(server);
-            con.Disconnect();
+            Entities.Backups backupRestore = new Entities.Backups();
+            BackupDAC backupDAC = new BackupDAC();
+            backupRestore = backup;
+            backupRestore.Path= HostingEnvironment.MapPath("~/Backup/" + backup.Nombre + "/.bak");
+            backupDAC.CreateBackup(backupRestore);
+
         }
 
-        public static void RestoreDatabase(Backups backup)
+        public void RestaurarBase()
         {
-            ServerConnection con = new ServerConnection(@"DESKTOP-VDU4AC0\SQLEXPRESS02");
-            Server server = new Server(con);
-            Restore destination = new Restore();
-            destination.Action = RestoreActionType.Database;
-            destination.Database = "GreenElectric";
-            BackupDeviceItem source = new BackupDeviceItem(backup.Nombre, DeviceType.File);
-            destination.Devices.Add(source);
-            destination.ReplaceDatabase = true;
-            destination.SqlRestore(server);
-            con.Disconnect();
+            Entities.Backups backupRestore = new Entities.Backups();
+            BackupDAC backupDAC = new BackupDAC();
+            backupRestore = backupDAC.ReadBy();
+            RestoreDatabase(backupRestore);
+
+
+        }
+
+
+        public  void RestoreDatabase(Backups backup)
+        {
+            Entities.Backups backupRestore = new Entities.Backups();
+            BackupDAC backupDAC = new BackupDAC();
+            backupRestore = backup;
+            backupRestore.Path = HostingEnvironment.MapPath("~/Backup/" + backup.Nombre + "/.bak");
+            backupDAC.Restore(backupRestore);
         }
 
         public Backups Create(Backups entity)
@@ -49,7 +52,11 @@ namespace Negocio.Servicios
             entity.Nombre = "Backup-" + entity.Fecha;
             BackupDatabase(entity);
             BackupDAC backupDAC = new BackupDAC();
-            return backupDAC.Create(entity);
+            Entities.Backups backups = new Backups();
+            backups = backupDAC.Create(entity);
+            BackupDatabase(entity);
+              
+            return backups;
         }
         public Backups Create()
         {
