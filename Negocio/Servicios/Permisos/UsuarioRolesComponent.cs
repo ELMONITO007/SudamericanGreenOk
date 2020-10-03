@@ -174,7 +174,7 @@ namespace Negocio
             UsuarioDac usuarioDac = new UsuarioDac();
                 Roles unRol = new Roles();
                 RolesComponent rolesComponent = new RolesComponent();
-                usuarioRoles.usuarios = usuarioDac.ReadByEmail(entity.usuarios.Email);
+                usuarioRoles.usuarios = entity.usuarios;
           
             usuarioRoles.listaRoles = ReadByUsuario(usuarioRoles.usuarios.Id);
                 

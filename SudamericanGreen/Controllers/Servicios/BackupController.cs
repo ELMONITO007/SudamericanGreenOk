@@ -22,9 +22,35 @@ namespace Evaluaciones_Tecnicas.Controllers.Servicios
         }
         [AuthorizerUser(_roles: "Administrador")]
         // GET: Backup/Details/5
-        public ActionResult Details(int id)
+        public ActionResult ConsistenciaBD()
         {
-            return View();
+            LoginComponent loginComponent = new LoginComponent();
+            DVV dVV = new DVV();
+            dVV.estado = loginComponent.VerificarDVV();
+
+
+            return View(dVV);
+        }
+        [HttpPost]
+        public ActionResult ConsistenciaBD(FormCollection collection)
+        {
+            try
+            {
+                bool status = bool.Parse(collection.Get("estado"));
+                if (!status)
+                {
+                    BackupComponent backupComponent = new BackupComponent();
+                    backupComponent.RestaurarBase();
+                }
+              
+                // TODO: Add delete logic here
+
+                return RedirectToAction("Index");
+            }
+            catch (Exception e)
+            {
+                return View();
+            }
         }
         [AuthorizerUser(_roles: "Administrador")]
         // GET: Backup/Create

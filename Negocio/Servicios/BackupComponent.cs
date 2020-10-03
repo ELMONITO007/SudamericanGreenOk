@@ -40,6 +40,11 @@ namespace Negocio.Servicios
             Entities.Backups backupRestore = new Entities.Backups();
             BackupDAC backupDAC = new BackupDAC();
             backupRestore = backupDAC.ReadBy();
+            backupRestore.Path = HostingEnvironment.MapPath("~/Backup/" + backupRestore.Nombre + ".bak");
+ 
+        
+            UsuariosComponent usuariosComponent = new UsuariosComponent();
+  
             RestoreDatabase(backupRestore);
 
 
@@ -54,11 +59,10 @@ namespace Negocio.Servicios
             backupRestore.Path = HostingEnvironment.MapPath("~/Backup/" + backupRestore.Nombre + ".bak");
             backupDAC.Restore(backupRestore);
             Bitacora bitacora = new Bitacora();
-            bitacora.eventoBitacora.Id = 10;
-            bitacora.fecha = DateTime.Now.ToString("dd-MM-yyyy");
-            bitacora.hora = DateTime.Now.ToString("hh mm ss");
+            bitacora.eventoBitacora.Id = 11;
+            
             UsuariosComponent usuarios = new UsuariosComponent();
-            bitacora.usuarios = usuarios.ReadBy(backup.usuarios.Id);
+            bitacora.usuarios.Email = "andres.benitez@transener.com.ar";
             BitacoraComponent bitacoraComponent = new BitacoraComponent();
             bitacoraComponent.Create(bitacora);
         }

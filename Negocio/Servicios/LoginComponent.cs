@@ -163,16 +163,21 @@ namespace Negocio
                         }
                         else
                         {
-                            loginError.error = "Error Critico V. Envie un email con el error a dolores.conde@transener.com.ar";
+                            loginError.error = "Error Interno, vualva a intentar";
                             bitacora.eventoBitacora.Id = 2;
                             bitacoraComponent.Create(bitacora);
+
+                            BackupComponent backupComponent = new BackupComponent();
+                            backupComponent.RestaurarBase();
                         }
                     }
                     else
                     {
-                        loginError.error = "Error Critico H. Envie un email con el error a dolores.conde@transener.com.ar";
+                        loginError.error = "Error Interno, vualva a intentar";
                         bitacora.eventoBitacora.Id = 3;
                         bitacoraComponent.Create(bitacora);
+                        BackupComponent backupComponent = new BackupComponent();
+                        backupComponent.RestaurarBase();
                     }
                 }
                 else
