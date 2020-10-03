@@ -9,7 +9,7 @@ namespace Data
     public abstract class DataAccessComponent
     {
         protected const string CONNECTION_NAME = "DefaultConnection";
-
+        protected const string CONNECTION_Restore = "Restore";
         static DataAccessComponent()
         {
             DatabaseFactory.SetDatabaseProviderFactory(new DatabaseProviderFactory(), false);

@@ -2275,6 +2275,8 @@
     <Content Include="Views\Roles\Agregar.cshtml" />
     <Content Include="Views\Roles\DeleteComposite.cshtml" />
     <Content Include="Views\UsuarioRoles\Delete.cshtml" />
+    <Content Include="Views\Backup\Delete.cshtml" />
+    <Content Include="Views\Backup\Restore.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

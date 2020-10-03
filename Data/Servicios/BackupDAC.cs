@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,7 +27,7 @@ namespace Data
 
         public Backups Create(Backups entity)
         {
-            const string SQL_STATEMENT = "insert into Backups(Nombre,Fecha)values(@Nombre,@Fecha) ";
+            const string SQL_STATEMENT = "insert into [dbo].[Backup](Nombre,Fecha,activo)values(@Nombre,@Fecha,1) ";
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
             using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
             {
@@ -42,7 +43,7 @@ namespace Data
 
         public void Delete(int id)
         {
-            const string SQL_STATEMENT = "update Backup set Activo=0 where id=@Id";
+            const string SQL_STATEMENT = "update [dbo].[Backup] set Activo=0 where id_Backup=@Id";
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
             using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
             {
@@ -74,7 +75,7 @@ namespace Data
 
         public Backups ReadBy(int id)
         {
-            const string SQL_STATEMENT = "select * from Backup where activo=1 and id=@Id";
+            const string SQL_STATEMENT = "select * from  [dbo].[Backup] where activo=1 and id_Backup=@Id";
             Backups backups = null;
 
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
@@ -135,13 +136,15 @@ namespace Data
         }
         public void Restore(Backups entity)
         {
-            const string SQL_STATEMENT = "restore database  GreenElectric from disk=@path";
-           
+            const string SQL_STATEMENT = "alter database GreenElectric    set offline with rollback immediate   restore database  GreenElectric from disk=@path     alter database  GreenElectric  set online";
 
-            var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
+
+
+
+            var db = DatabaseFactory.CreateDatabase(CONNECTION_Restore);
             using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
             {
-
+             
                 db.AddInParameter(cmd, "@path", DbType.String, entity.Path);
 
            
