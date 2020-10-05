@@ -73,10 +73,11 @@ namespace Negocio
               return persona;
         }
 
-        public void Update(Persona entity)
+        public bool Update(Persona entity)
         {
             PersonaDAC personaDAC = new PersonaDAC();
             personaDAC.Update(entity);
+            return true;
         }
 
         public bool Verificar(Persona entity)

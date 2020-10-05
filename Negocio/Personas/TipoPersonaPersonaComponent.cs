@@ -8,7 +8,7 @@ using Data;
 
 namespace Negocio.Personas
 {
-    public class TipoPersonaPersonaDac : IRepository2<TipoPersonaPersona>
+    public class TipoPersonaPersonaComponent : IRepository2<TipoPersonaPersona>
     {
         public TipoPersonaPersona Create(TipoPersonaPersona entity)
         {
@@ -75,7 +75,7 @@ namespace Negocio.Personas
 
         }
 
-        public void Update(TipoPersonaPersona entity)
+        public bool Update(TipoPersonaPersona entity)
         {
 
             throw new NotImplementedException();

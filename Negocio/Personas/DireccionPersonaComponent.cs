@@ -108,7 +108,7 @@ namespace Negocio
             }
         
         }
-        public void Update(DireccionPersona entity)
+        public bool Update(DireccionPersona entity)
         {
             throw new NotImplementedException();
         }

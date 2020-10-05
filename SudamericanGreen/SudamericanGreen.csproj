@@ -2011,6 +2011,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\Personas\TipoPersonaController.cs" />
     <Compile Include="Controllers\Servicios\BackupController.cs" />
     <Compile Include="Controllers\Servicios\BitacoraController.cs" />
     <Compile Include="Controllers\Servicios\DVVController.cs" />
@@ -2292,6 +2293,7 @@
     <Folder Include="Imagenes\" />
     <Folder Include="PDF\" />
     <Folder Include="Views\DVV\" />
+    <Folder Include="Views\TipoPersona\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Entities\Entities.csproj">

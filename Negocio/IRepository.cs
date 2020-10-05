@@ -20,7 +20,7 @@ namespace Negocio
         List<TEntity> Read();
         TEntity ReadBy(int id);
         TEntity ReadBy(String id);
-        void Update(TEntity entity);
+        bool Update(TEntity entity);
 
         Boolean Verificar(TEntity entity);
         void Delete(int id);

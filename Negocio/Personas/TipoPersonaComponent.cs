@@ -48,10 +48,18 @@ namespace Negocio
             return tipoPersonaDAC.ReadBy(id);
         }
 
-        public void Update(TipoPersona entity)
+        public bool Update(TipoPersona entity)
         {
-            TipoPersonaDAC tipoPersonaDAC = new TipoPersonaDAC();
-            tipoPersonaDAC.Update(entity);
+            if (Verificar(entity))
+            {
+                TipoPersonaDAC tipoPersonaDAC = new TipoPersonaDAC();
+              return true;
+            }
+            else
+            {
+                return false;
+            }
+      
         }
 
         public bool Verificar(TipoPersona entity)

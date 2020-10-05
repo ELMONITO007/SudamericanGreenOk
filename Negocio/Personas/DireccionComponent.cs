@@ -40,10 +40,11 @@ namespace Negocio
             return direccionDAC.ReadBy(id);
         }
 
-        public void Update(Direccion entity)
+        public bool Update(Direccion entity)
         {
             DireccionDAC direccionDAC = new DireccionDAC();
             direccionDAC.Update(entity);
+            return true;
         }
 
         public bool Verificar(Direccion entity)
