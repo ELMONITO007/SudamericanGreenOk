@@ -13,4 +13,16 @@ namespace Negocio
         void Update(TEntity entity);
         void Delete(int id);
     }
+
+    public interface IRepository2<TEntity> where TEntity : EntityBase
+    {
+        TEntity Create(TEntity entity);
+        List<TEntity> Read();
+        TEntity ReadBy(int id);
+        TEntity ReadBy(String id);
+        void Update(TEntity entity);
+
+        Boolean Verificar(TEntity entity);
+        void Delete(int id);
+    }
 }

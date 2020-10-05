@@ -1,4 +1,5 @@
-﻿using Entities.Personas;
+﻿using Entities;
+
 using Microsoft.Practices.EnterpriseLibrary.Data;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Data
 {
-    class DireccionPersonaDAC : DataAccessComponent, IRepository2<DireccionPersona>
+ public   class DireccionPersonaDAC : DataAccessComponent, IRepository2<DireccionPersona>
     {
         public DireccionPersona ALoad(IDataReader entity)
         {
