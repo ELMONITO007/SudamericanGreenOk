@@ -133,7 +133,7 @@ foreach (PropertyMetadata property in ModelMetadata.Properties) {
 
                 <br />
 
-                 <input type="submit" style="margin-left:30%;max-width:40%" value="Crear" class="btn btn-outline-info" />
+                 <input type="submit" style="margin-left:30%;max-width:40%" value="Actualizar" class="btn btn-outline-info" />
   
          </div>
      </div>

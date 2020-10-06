@@ -2279,6 +2279,11 @@
     <Content Include="Views\Backup\Delete.cshtml" />
     <Content Include="Views\Backup\Restore.cshtml" />
     <Content Include="Views\Backup\ConsistenciaBD.cshtml" />
+    <Content Include="Views\TipoPersona\Index.cshtml" />
+    <Content Include="Views\TipoPersona\ErrorPage.cshtml" />
+    <Content Include="Views\TipoPersona\Create.cshtml" />
+    <Content Include="Views\TipoPersona\Edit.cshtml" />
+    <Content Include="Views\TipoPersona\Delete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -2293,7 +2298,6 @@
     <Folder Include="Imagenes\" />
     <Folder Include="PDF\" />
     <Folder Include="Views\DVV\" />
-    <Folder Include="Views\TipoPersona\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Entities\Entities.csproj">

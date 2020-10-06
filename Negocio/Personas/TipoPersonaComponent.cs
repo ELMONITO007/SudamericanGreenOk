@@ -53,6 +53,7 @@ namespace Negocio
             if (Verificar(entity))
             {
                 TipoPersonaDAC tipoPersonaDAC = new TipoPersonaDAC();
+                tipoPersonaDAC.Update(entity);
               return true;
             }
             else

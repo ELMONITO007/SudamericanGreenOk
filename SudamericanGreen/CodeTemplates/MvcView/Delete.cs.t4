@@ -58,7 +58,7 @@ if (!String.IsNullOrEmpty(LayoutPageFile)) {
 
 <div class="form-actions no-color">
     <input type="submit" value="Eliminar" style="margin-left:1%" class="btn btn-outline-info" />
-
+    <br/>
     <input type="button" class="btn btn-outline-primary " style="float:left;margin-left:1%;margin-top:3%" value="Volver" onclick="location.href='@Url.Action("Index", "Permiso")'" />
 </div>
     }

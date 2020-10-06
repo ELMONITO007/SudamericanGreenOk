@@ -15,8 +15,8 @@ namespace Data
         private TipoPersona LoadRoles(IDataReader dr)
         {
             TipoPersona tipoPersona = new TipoPersona();
-            tipoPersona.Id = GetDataValue<int>(dr, "Id");
-            tipoPersona.tipoPersona = GetDataValue<string>(dr, "ID_TipoPersona");
+            tipoPersona.Id = GetDataValue<int>(dr, "Id_TipoPersona");
+            tipoPersona.tipoPersona = GetDataValue<string>(dr, "tipoPersona");
             return tipoPersona;
         }
 
@@ -37,7 +37,7 @@ namespace Data
 
         public void Delete(int id)
         {
-            const string SQL_STATEMENT = "update TipoPersona set Activo=0 where id=@Id";
+            const string SQL_STATEMENT = "update TipoPersona set Activo=0 where id_TipoPersona=@Id";
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
             using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
             {
