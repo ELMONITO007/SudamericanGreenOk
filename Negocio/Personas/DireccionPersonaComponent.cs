@@ -12,17 +12,30 @@ namespace Negocio
     {
         public DireccionPersona Create(DireccionPersona entity)
         {
-            if (Verificar(entity))
-            {
-                DireccionPersonaDAC direccionPersonaDAC = new DireccionPersonaDAC();
-                return direccionPersonaDAC.Create(entity);
-            }
-            else
-            {
-                return null;
-            }
+         
+            DireccionComponent direccion = new DireccionComponent();
+            direccion.Create(entity.direccion);
+            DireccionPersona direccionPersona = new DireccionPersona();
+            direccionPersona.persona = entity.persona;
+            direccionPersona.direccion = direccion.ReadBy(entity.direccion);
+            if (Verificar(direccionPersona))
+                {
 
-       
+                  
+                    DireccionPersonaDAC direccionPersonaDAC = new DireccionPersonaDAC();
+                    return direccionPersonaDAC.Create(direccionPersona);
+                }
+
+
+         
+           else
+                {
+                    return null;
+                }
+
+
+
+
         }
 
         public void Delete(int id)
@@ -115,14 +128,9 @@ namespace Negocio
 
         public bool Verificar(DireccionPersona entity)
         {
-            if (ReadBy(entity.persona.Id,entity.direccion.Id) is null)
-            {
+            
                 return true;
-            }
-            else
-            {
-                return false;
-            }
+          
         }
     }
 }

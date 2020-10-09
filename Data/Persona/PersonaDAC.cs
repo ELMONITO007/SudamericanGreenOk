@@ -62,7 +62,7 @@ namespace Data
 
         public List<Persona> Read()
         {
-            const string SQL_STATEMENT = "select * form Persona where  activo=1";
+            const string SQL_STATEMENT = "select * from Persona where  activo=1";
 
             List<Persona> result = new List<Persona>();
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
@@ -82,7 +82,7 @@ namespace Data
 
         public Persona ReadBy(int id)
         {
-            const string SQL_STATEMENT = "select * form Direccion where  activo=1 and DNI=@Id";
+            const string SQL_STATEMENT = "select * from Persona where  activo=1 and DNI=@Id";
             Persona roles = null;
 
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);

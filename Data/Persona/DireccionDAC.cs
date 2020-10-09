@@ -83,13 +83,38 @@ namespace Data
 
         public Direccion ReadBy(int id)
         {
-            const string SQL_STATEMENT = "select * form Direccion where  activo=1 and id_Direccion=@Id";
+            const string SQL_STATEMENT = "select * from Direccion where  activo=1 and id_Direccion=@Id";
             Direccion roles = null;
 
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
             using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
             {
                 db.AddInParameter(cmd, "@Id", DbType.Int32, id);
+                using (IDataReader dr = db.ExecuteReader(cmd))
+                {
+                    if (dr.Read())
+                    {
+                        roles = ALoad(dr);
+                    }
+                }
+            }
+            return roles;
+        }
+        public Direccion ReadBy(Direccion entity)
+        {
+            const string SQL_STATEMENT = "select * from Direccion where Direccion=@Direccion and Numero=@Numero and Departamento=@Departamento and Localidad=@Localidad and CodigoPostal=@CodigoPostal and Provincia=@Provincia and activo=1";
+            Direccion roles = null;
+
+            var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
+            using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
+            {
+                db.AddInParameter(cmd, "@Direccion", DbType.String, entity.direccion);
+                db.AddInParameter(cmd, "@numero", DbType.Int32, entity.numero);
+                db.AddInParameter(cmd, "@piso", DbType.Int32, entity.piso);
+                db.AddInParameter(cmd, "@departamento", DbType.String, entity.departamento);
+                db.AddInParameter(cmd, "@localidad", DbType.String, entity.localidad);
+                db.AddInParameter(cmd, "@codigoPostal", DbType.Int32, entity.codigoPostal);
+                db.AddInParameter(cmd, "@Provincia", DbType.String, entity.provincia);
                 using (IDataReader dr = db.ExecuteReader(cmd))
                 {
                     if (dr.Read())
@@ -124,7 +149,7 @@ namespace Data
 
         public void Update(Direccion entity)
         {
-            const string SQL_STATEMENT = "update Direccion set Direccion=Direccion, Numero=Numero, piso=Piso, Departamento=Departamento,Localidad=Localidad, CodigoPostal=CodigoPostal,Provincia=Provincia where ID_Direccion=@id";
+            const string SQL_STATEMENT = "update Direccion set Direccion=@Direccion, Numero=@Numero, piso=@Piso, Departamento=@Departamento,Localidad=@Localidad, CodigoPostal=@CodigoPostal,Provincia=@Provincia where ID_Direccion=@id";
 
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
             using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))

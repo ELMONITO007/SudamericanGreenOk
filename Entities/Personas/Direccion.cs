@@ -31,7 +31,7 @@ namespace Entities
         [Required]
         public string departamento { get; set; }
         [Required]
-        [DisplayName("Departamento")]
+        [DisplayName("Localidad")]
         [DataType(DataType.Text, ErrorMessage = "Solo Ingrese texto")]
         public string localidad { get; set; }
 

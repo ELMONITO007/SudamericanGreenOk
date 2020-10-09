@@ -31,12 +31,13 @@ namespace Entities
         public Usuarios usuarios { get; set; }
         public List<TipoPersona> listaTipoPersona { get; set; }
         public TipoPersona tipoPersona { get; set; }
-
+        public Direccion Direccion = new Direccion();
         public Persona()
         {
             usuarios = new Usuarios();
             listaTipoPersona = new List<TipoPersona>();
             tipoPersona = new TipoPersona();
+            Direccion = new Direccion();
         }
     }
 }

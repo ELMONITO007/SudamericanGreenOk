@@ -24,7 +24,7 @@ namespace Data
         public DireccionPersona Create(DireccionPersona entity)
         {
 
-            const string SQL_STATEMENT = "insert into DireccionPersona(DNI,ID_Direccion)values(@name,@ID_Direccion)";
+            const string SQL_STATEMENT = "insert into DireccionPersona(DNI,ID_Direccion)values(@Id,@ID_Direccion)";
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
             using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
             {
@@ -125,7 +125,7 @@ namespace Data
             }
             return result;
         }
-
+ 
         public void Update(DireccionPersona entity)
         {
             throw new NotImplementedException();

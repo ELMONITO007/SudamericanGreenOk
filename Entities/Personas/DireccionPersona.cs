@@ -11,7 +11,7 @@ namespace Entities
         public override int Id { get; set; }
         public Direccion direccion { get; set; }
         public Persona persona { get; set; }
-
+        public List<DireccionPersona> direccionPersona { get; set; }
 
         public DireccionPersona()
         {

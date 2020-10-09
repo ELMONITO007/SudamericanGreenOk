@@ -56,9 +56,31 @@ namespace Negocio.Personas
 
             return result;
         }
+        public List<TipoPersonaPersona> Read(int id)
+        {
+            TipoPersonaPersonaDAC tipoPersonaPersonaDAC = new TipoPersonaPersonaDAC();
+            List<TipoPersonaPersona> tipoPersonaPersonas = new List<TipoPersonaPersona>();
+            List<TipoPersonaPersona> result = new List<TipoPersonaPersona>();
 
+            tipoPersonaPersonas = tipoPersonaPersonaDAC.Read(id);
+            foreach (TipoPersonaPersona item in tipoPersonaPersonas)
+            {
+                TipoPersonaPersona tipoPersonaPersona = new TipoPersonaPersona();
+                PersonaComponent personaComponent = new PersonaComponent();
+                TipoPersonaComponent tipoPersonaComponent = new TipoPersonaComponent();
+                tipoPersonaPersona.tipoPersona = tipoPersonaComponent.ReadBy(item.tipoPersona.Id);
+                tipoPersonaPersona.persona = personaComponent.ReadBy(item.persona.Id);
+                result.Add(tipoPersonaPersona);
+
+            }
+
+
+
+            return result;
+        }
         public TipoPersonaPersona ReadBy(int id)
         {
+
             throw new NotImplementedException();
         }
 

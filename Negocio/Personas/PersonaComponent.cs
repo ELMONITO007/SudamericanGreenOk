@@ -1,5 +1,6 @@
 ﻿using Data;
 using Entities;
+using Negocio.Personas;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,23 @@ namespace Negocio
             if (Verificar(entity))
             {
                 PersonaDAC personaDAC = new PersonaDAC();
-                return personaDAC.Create(entity);
+                Persona persona = new Persona();
+                persona = personaDAC.Create(entity);
+                TipoPersonaPersonaComponent tipoPersonaPersonaComponent = new TipoPersonaPersonaComponent();
+                TipoPersonaPersona tipoPersonaPersona = new TipoPersonaPersona();
+
+                tipoPersonaPersona.persona.Id = entity.Id;
+                tipoPersonaPersona.tipoPersona.Id = entity.tipoPersona.Id;
+                tipoPersonaPersonaComponent.Create(tipoPersonaPersona);
+                DireccionComponent direccionComponent = new DireccionComponent();
+                direccionComponent.Create(entity.Direccion);
+                DireccionPersona direccionPersona = new DireccionPersona();
+                direccionPersona.direccion = direccionComponent.ReadBy(entity.Direccion.direccion);
+                direccionPersona.persona = personaDAC.ReadBy(entity.Id);
+                DireccionPersonaComponent direccion = new DireccionPersonaComponent();
+                direccion.Create(direccionPersona);
+
+                return persona;
             }
             else
             {
@@ -51,6 +68,37 @@ namespace Negocio
             return result;
         }
 
+        public Persona ObtenerTipoPersonaDiponible(int id)
+        {
+            Persona persona = new Persona();
+            List<TipoPersona> tipoPersonasBase = new List<TipoPersona>();
+            List<TipoPersonaPersona> tipoPersonaPersonas = new List<TipoPersonaPersona>();
+        TipoPersonaPersonaComponent tipoPersonaPersonaComponent = new TipoPersonaPersonaComponent();
+            TipoPersonaComponent tipoPersonaComponent = new TipoPersonaComponent();
+            tipoPersonasBase = tipoPersonaComponent.Read();
+            tipoPersonaPersonas = tipoPersonaPersonaComponent.Read(id);
+            foreach (TipoPersona item in tipoPersonasBase)
+            {
+                int a = 0;
+                foreach (TipoPersonaPersona subItem in tipoPersonaPersonas)
+                {
+                    if (subItem.tipoPersona.Id==item.Id)
+                    {
+                        a = 1;
+                    }
+
+
+                }
+                if (a==0)
+                {
+                    persona.listaTipoPersona.Add(item);
+                }
+            }
+
+            return persona;
+        
+        
+        }
         public Persona ReadBy(int id)
         {
             Persona persona = new Persona();

@@ -2011,6 +2011,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\Personas\DireccionPersonaController.cs" />
+    <Compile Include="Controllers\Personas\PersonaController.cs" />
     <Compile Include="Controllers\Personas\TipoPersonaController.cs" />
     <Compile Include="Controllers\Servicios\BackupController.cs" />
     <Compile Include="Controllers\Servicios\BitacoraController.cs" />
@@ -2284,6 +2286,11 @@
     <Content Include="Views\TipoPersona\Create.cshtml" />
     <Content Include="Views\TipoPersona\Edit.cshtml" />
     <Content Include="Views\TipoPersona\Delete.cshtml" />
+    <Content Include="Views\Persona\Index.cshtml" />
+    <Content Include="Views\DireccionPersona\Index.cshtml" />
+    <Content Include="Views\DireccionPersona\Create.cshtml" />
+    <Content Include="Views\DireccionPersona\Edit.cshtml" />
+    <Content Include="Views\DireccionPersona\Delete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

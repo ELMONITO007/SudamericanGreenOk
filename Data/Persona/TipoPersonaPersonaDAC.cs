@@ -75,7 +75,26 @@ namespace Data
             }
             return result;
         }
+        public List<TipoPersonaPersona> Read(int id)
+        {
+            const string SQL_STATEMENT = "select * from TipoPersonaPersona as tpo join TipoPersona as tp on tpo.ID_TIpoPersona=tp.ID_TipoPersona join Persona as p  on p.DNI=tpo.DNI where p.Activo=1 and tp.Activo=1 and p.dni=@id";
 
+            List<TipoPersonaPersona> result = new List<TipoPersonaPersona>();
+            var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
+            using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
+            {
+                db.AddInParameter(cmd, "@Id", DbType.Int32, id);
+                using (IDataReader dr = db.ExecuteReader(cmd))
+                {
+                    while (dr.Read())
+                    {
+                        TipoPersonaPersona roles = ALoad(dr);
+                        result.Add(roles);
+                    }
+                }
+            }
+            return result;
+        }
         public TipoPersonaPersona ReadBy(int id)
         {
             throw new NotImplementedException();

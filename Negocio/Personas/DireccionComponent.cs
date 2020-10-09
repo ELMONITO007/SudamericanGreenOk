@@ -12,8 +12,16 @@ namespace Negocio
     {
         public Direccion Create(Direccion entity)
         {
-            DireccionDAC direccionDAC = new DireccionDAC();
-            return direccionDAC.Create(entity);
+            if (Verificar(entity))
+            {
+                DireccionDAC direccionDAC = new DireccionDAC();
+                return direccionDAC.Create(entity);
+            }
+            else
+            {
+                return null;
+            }
+          
         }
 
         public void Delete(int id)
@@ -33,7 +41,11 @@ namespace Negocio
             DireccionDAC direccionDAC = new DireccionDAC();
             return direccionDAC.ReadBy(id);
         }
-
+        public Direccion ReadBy(Direccion entity)
+        {
+            DireccionDAC direccionDAC = new DireccionDAC();
+            return direccionDAC.ReadBy(entity);
+        }
         public Direccion ReadBy(string id)
         {
             DireccionDAC direccionDAC = new DireccionDAC();
@@ -49,7 +61,14 @@ namespace Negocio
 
         public bool Verificar(Direccion entity)
         {
-            throw new NotImplementedException();
+            if (ReadBy(entity)is null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
