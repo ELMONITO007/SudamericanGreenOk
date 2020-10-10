@@ -83,7 +83,39 @@ namespace Negocio.Personas
 
             throw new NotImplementedException();
         }
+        public TipoPersonaPersona ObtenerTipoDisponible(int id)
+        {
+            TipoPersonaPersona tipoPersonaPersona = new TipoPersonaPersona();
+           List< TipoPersona> tipoPersonaPersonaBase = new List<TipoPersona>();
+            TipoPersonaPersona result = new TipoPersonaPersona();
+            TipoPersonaComponent tipoPersona = new TipoPersonaComponent();
+            PersonaComponent personaComponent = new PersonaComponent();
+            result.persona=personaComponent.ReadBy(id);
+            tipoPersonaPersona.tipoPersonaPersona = Read(id);
+            tipoPersonaPersonaBase = tipoPersona.Read();
 
+            foreach (TipoPersonaPersona item in tipoPersonaPersona.tipoPersonaPersona)
+            {
+                int a = 0;
+
+                foreach (TipoPersona subItem in tipoPersonaPersonaBase)
+                {
+                    if (subItem.Id==item.tipoPersona.Id)
+                    {
+                        a = 1;
+                    }
+                }
+
+                if (a==0)
+                {
+                    result.tipoPersonaPersona.Add(item);
+                }
+
+            }
+
+
+            return result;
+        }
         public TipoPersonaPersona ReadBy(string id)
         {
             throw new NotImplementedException();

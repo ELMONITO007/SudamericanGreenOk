@@ -2014,6 +2014,7 @@
     <Compile Include="Controllers\Personas\DireccionPersonaController.cs" />
     <Compile Include="Controllers\Personas\PersonaController.cs" />
     <Compile Include="Controllers\Personas\TipoPersonaController.cs" />
+    <Compile Include="Controllers\Personas\TipoPersonaPersonaController.cs" />
     <Compile Include="Controllers\Servicios\BackupController.cs" />
     <Compile Include="Controllers\Servicios\BitacoraController.cs" />
     <Compile Include="Controllers\Servicios\DVVController.cs" />
@@ -2291,6 +2292,10 @@
     <Content Include="Views\DireccionPersona\Create.cshtml" />
     <Content Include="Views\DireccionPersona\Edit.cshtml" />
     <Content Include="Views\DireccionPersona\Delete.cshtml" />
+    <Content Include="Views\DireccionPersona\ErroPage.cshtml" />
+    <Content Include="Views\TipoPersonaPersona\Index.cshtml" />
+    <Content Include="Views\TipoPersonaPersona\Create.cshtml" />
+    <Content Include="Views\TipoPersonaPersona\ErroPage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

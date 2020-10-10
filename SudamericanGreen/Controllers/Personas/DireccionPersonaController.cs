@@ -25,9 +25,15 @@ namespace Evaluaciones_Tecnicas.Controllers.Personas
         [AuthorizerUser(_roles: "Administrador")]
         //
         // GET: /DireccionPersona/Details/5
-        public ActionResult Details(int id)
+        public ActionResult ErroPage(int id)
         {
-            return View();
+            DireccionPersona persona = new DireccionPersona();
+           
+            persona.persona.Id = id;
+            
+
+
+            return View(persona);
         }
         [AuthorizerUser(_roles: "Administrador")]
         //
