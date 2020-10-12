@@ -24,7 +24,7 @@
             <!-- 404 Error Text -->
             <div class="text-center">
                 <div class="error mx-auto" data-text="Error">Error</div>
-                <p class="lead text-gray-800 mb-5">No se puede agregrar o modificar el Tipo de persona <i>"@Html.DisplayFor(model => model.tipoPersona.tipoPersona) del usuario @Html.DisplayFor(model => model.persona.usuarios.Nombre) @Html.DisplayFor(model => model.persona.usuarios.Apellido)"</i>.Ya existe
+                <p class="lead text-gray-800 mb-5">No se puede agregrar o modificar el Tipo de persona <i>"@Html.DisplayFor(model => model.tipoPersona.tipoPersona) del usuario @Html.DisplayFor(model => model.persona.usuarios.Nombre) @Html.DisplayFor(model => model.persona.usuarios.Apellido)"</i>.Ya existe o no hay Tipo de persona para agregar
 <p class="text-gray-500 mb-0">Por favor colocar otro nombre</p>
                 <a href="@Url.Action("Index", "tipoPersonaPersona",new { id=Model.persona.Id})">← volver al inicio</a>
             </div>

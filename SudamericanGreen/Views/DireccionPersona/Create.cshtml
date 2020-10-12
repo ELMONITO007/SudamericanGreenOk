@@ -28,18 +28,17 @@
 
                 @Html.EditorFor(model => model.direccion.direccion, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.direccion.direccion, "", new { @class = "text-danger" })
+                <br />
 
-
-
+                <br />
                 <h5 class="text-justify">
                     @Html.LabelFor(model => model.direccion.numero, new { @class = "control-label col-md-2" })
                 </h5>
 
                 @Html.EditorFor(model => model.direccion.numero, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.direccion.numero, "", new { @class = "text-danger" })
-
-
-
+                <br />
+                <br />
                 <h5 class="text-justify">
                     @Html.LabelFor(model => model.direccion.piso, new { @class = "control-label col-md-2" })
                 </h5>
@@ -47,16 +46,16 @@
                 @Html.EditorFor(model => model.direccion.piso, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.direccion.piso, "", new { @class = "text-danger" })
 
-
-
+                <br />
+                <br />
                 <h5 class="text-justify">
                     @Html.LabelFor(model => model.direccion.departamento, new { @class = "control-label col-md-2" })
                 </h5>
 
                 @Html.EditorFor(model => model.direccion.departamento, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.direccion.departamento, "", new { @class = "text-danger" })
-
-
+                <br />
+                <br />
 
                 <h5 class="text-justify">
                     @Html.LabelFor(model => model.direccion.localidad, new { @class = "control-label col-md-2" })
@@ -64,8 +63,8 @@
 
                 @Html.EditorFor(model => model.direccion.localidad, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.direccion.localidad, "", new { @class = "text-danger" })
-
-
+                <br />
+                <br />
 
                 <h5 class="text-justify">
                     @Html.LabelFor(model => model.direccion.codigoPostal, new { @class = "control-label col-md-2" })
@@ -73,8 +72,8 @@
 
                 @Html.EditorFor(model => model.direccion.codigoPostal, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.direccion.codigoPostal, "", new { @class = "text-danger" })
-
-
+                <br />
+                <br />
 
                 <h5 class="text-justify">
                     @Html.LabelFor(model => model.direccion.provincia, new { @class = "control-label col-md-2" })
@@ -85,13 +84,14 @@
                 @Html.HiddenFor(model => model.persona.Id)
 
 
-                <input type="button" class="btn btn-outline-primary " style="margin-left:30%;max-width:40%" value="Volver" onclick="location.href='@Url.Action("Index", "DireccionPersona",new { id=Model.persona.Id})'" />
 
-                <br />
-
-                <input type="submit" style="margin-left:30%;max-width:40%" value="Crear" class="btn btn-outline-info" />
 
             </div>
+            <input type="button" class="btn btn-outline-primary " value="Volver" onclick="location.href='@Url.Action("Index", "DireccionPersona",new { id=Model.persona.Id})'" />
+
+            <br />
+
+            <input type="submit" value="Crear" class="btn btn-outline-info" />
         </div>
 
     </div>

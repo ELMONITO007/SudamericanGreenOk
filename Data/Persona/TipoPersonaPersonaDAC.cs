@@ -22,7 +22,7 @@ namespace Data
 
         public TipoPersonaPersona Create(TipoPersonaPersona entity)
         {
-            const string SQL_STATEMENT = "insert into TipoPersonaPersona(DNI,ID_tipoPersona)values(@name,@ID_tipoPersona)";
+            const string SQL_STATEMENT = "insert into TipoPersonaPersona(DNI,ID_tipoPersona)values(@Id,@ID_tipoPersona)";
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
             using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
             {
@@ -106,9 +106,9 @@ namespace Data
         }
         public TipoPersonaPersona ReadBy(int id,int tipo)
         {
-            const string SQL_STATEMENT = "select * from TipoPersonaPersona as tpo join TipoPersona as tp on tpo.ID_TIpoPersona=tp.ID_TipoPersona join Persona as p  on p.DNI=tpo.DNI where p.Activo=1 and tp.Activo=1 and tpo.DNI=@DNI and tpo.ID_TipoPersona=@ID_TipoPersona";
+            const string SQL_STATEMENT = "select * from TipoPersonaPersona as tpo join TipoPersona as tp on tpo.ID_TIpoPersona=tp.ID_TipoPersona join Persona as p  on p.DNI=tpo.DNI where p.Activo=1 and tp.Activo=1 and tpo.DNI=@Id and tpo.ID_TipoPersona=@TipoPersona";
 
-          TipoPersonaPersona result = new TipoPersonaPersona();
+            TipoPersonaPersona result=null;
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
             using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
             {
@@ -118,6 +118,7 @@ namespace Data
                 {
                     if (dr.Read())
                     {
+                        result = new TipoPersonaPersona();
                         result = ALoad(dr);
                         
                     }
@@ -127,7 +128,7 @@ namespace Data
         }
         public List<TipoPersonaPersona> ReadByPersona(int id)
         {
-            const string SQL_STATEMENT = "select * from TipoPersonaPersona as tpo join TipoPersona as tp on tpo.ID_TIpoPersona=tp.ID_TipoPersona join Persona as p  on p.DNI=tpo.DNI where p.Activo=1 and tp.Activo=1 and tpo.DNI=@DNI";
+            const string SQL_STATEMENT = "select * from TipoPersonaPersona as tpo join TipoPersona as tp on tpo.ID_TIpoPersona=tp.ID_TipoPersona join Persona as p  on p.DNI=tpo.DNI where p.Activo=1 and tp.Activo=1 and tpo.DNI=@Id";
 
             List<TipoPersonaPersona> result = new List<TipoPersonaPersona>();
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);

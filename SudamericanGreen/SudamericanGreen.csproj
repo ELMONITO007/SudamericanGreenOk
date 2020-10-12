@@ -2296,6 +2296,8 @@
     <Content Include="Views\TipoPersonaPersona\Index.cshtml" />
     <Content Include="Views\TipoPersonaPersona\Create.cshtml" />
     <Content Include="Views\TipoPersonaPersona\ErroPage.cshtml" />
+    <Content Include="Views\TipoPersonaPersona\Delete.cshtml" />
+    <Content Include="Views\Persona\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -10,6 +10,9 @@ namespace Entities
 {
    public class Persona :EntityBase
     {
+        [Required]
+        [DisplayName("DNI")]
+        [Range(1, 99999999, ErrorMessage = "El DNI debe no tener mas de 9 digitos")]
         public override int Id { get; set; }
         [Required]
         [DisplayName("Email")]
@@ -19,7 +22,7 @@ namespace Entities
         [Required]
         [DisplayName("Cuil")]
         [Range(20000000000, 30000000000, ErrorMessage = "El cuil debe tener al menos 11 digitos")]
-        [StringLength(11, ErrorMessage = "El cuil debe tener al menos 11 digitos")]
+      
 
         public string cuil { get; set; }
 
@@ -28,6 +31,8 @@ namespace Entities
         [DisplayName("Telefono")]
         [DataType(DataType.PhoneNumber, ErrorMessage = "Formato invalido")]
         public string telefono { get; set; }
+
+
         public Usuarios usuarios { get; set; }
         public List<TipoPersona> listaTipoPersona { get; set; }
         public TipoPersona tipoPersona { get; set; }

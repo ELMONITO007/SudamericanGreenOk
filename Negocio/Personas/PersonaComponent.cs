@@ -15,22 +15,43 @@ namespace Negocio
         {
             if (Verificar(entity))
             {
+                //agregar Usuario
+
+                Usuarios usuarios = new Usuarios();
+                UsuariosComponent usuariosComponent = new UsuariosComponent();
+                usuarios = entity.usuarios;
+                usuarios.Email = entity.email;
+                usuariosComponent.Create(entity.usuarios);
+                //Crear persona
                 PersonaDAC personaDAC = new PersonaDAC();
                 Persona persona = new Persona();
+                entity.usuarios = usuariosComponent.ReadByEmail(entity.email);   
                 persona = personaDAC.Create(entity);
+
+
+                //Agrega tipo Persona
                 TipoPersonaPersonaComponent tipoPersonaPersonaComponent = new TipoPersonaPersonaComponent();
                 TipoPersonaPersona tipoPersonaPersona = new TipoPersonaPersona();
-
                 tipoPersonaPersona.persona.Id = entity.Id;
                 tipoPersonaPersona.tipoPersona.Id = entity.tipoPersona.Id;
                 tipoPersonaPersonaComponent.Create(tipoPersonaPersona);
+
+
+
+                //Agrega Direccion
                 DireccionComponent direccionComponent = new DireccionComponent();
                 direccionComponent.Create(entity.Direccion);
+
+                //Asiganar direccion al usuario
                 DireccionPersona direccionPersona = new DireccionPersona();
-                direccionPersona.direccion = direccionComponent.ReadBy(entity.Direccion.direccion);
-                direccionPersona.persona = personaDAC.ReadBy(entity.Id);
+                direccionPersona.direccion = direccionComponent.ReadBy(entity.Direccion);
+                direccionPersona.persona.Id = entity.Id;
                 DireccionPersonaComponent direccion = new DireccionPersonaComponent();
                 direccion.Create(direccionPersona);
+
+
+            
+
 
                 return persona;
             }
@@ -105,10 +126,13 @@ namespace Negocio
             PersonaDAC personaDAC = new PersonaDAC();
             persona = personaDAC.ReadBy(id);
             UsuariosComponent usuariosComponent = new UsuariosComponent();
-            persona.usuarios = usuariosComponent.ReadBy(persona.usuarios.Id);
+            
+                
+                return persona;
+        
 
 
-            return persona;
+            
         }
 
         public Persona ReadBy(string id)

@@ -90,16 +90,18 @@ namespace Negocio.Personas
             TipoPersonaPersona result = new TipoPersonaPersona();
             TipoPersonaComponent tipoPersona = new TipoPersonaComponent();
             PersonaComponent personaComponent = new PersonaComponent();
-            result.persona=personaComponent.ReadBy(id);
+            
             tipoPersonaPersona.tipoPersonaPersona = Read(id);
             tipoPersonaPersonaBase = tipoPersona.Read();
-
-            foreach (TipoPersonaPersona item in tipoPersonaPersona.tipoPersonaPersona)
+            foreach (TipoPersona subItem in tipoPersonaPersonaBase)
+               
             {
+                TipoPersonaPersona tipo = new TipoPersonaPersona();
                 int a = 0;
+                foreach (TipoPersonaPersona item in tipoPersonaPersona.tipoPersonaPersona)
 
-                foreach (TipoPersona subItem in tipoPersonaPersonaBase)
                 {
+                    tipo = item;
                     if (subItem.Id==item.tipoPersona.Id)
                     {
                         a = 1;
@@ -108,13 +110,22 @@ namespace Negocio.Personas
 
                 if (a==0)
                 {
-                    result.tipoPersonaPersona.Add(item);
+                    result.listaTipoPersona.Add(subItem);
                 }
 
             }
 
 
-            return result;
+            TipoPersonaPersona resultado = new TipoPersonaPersona();
+            resultado.persona = personaComponent.ReadBy(id);
+            foreach (TipoPersona item in result.listaTipoPersona)
+            {
+                TipoPersonaPersona tipo = new TipoPersonaPersona();
+                tipo.tipoPersona = item;
+                resultado.tipoPersonaPersona.Add(tipo);
+            }
+
+            return resultado;
         }
         public TipoPersonaPersona ReadBy(string id)
         {
@@ -137,7 +148,9 @@ namespace Negocio.Personas
 
         public bool Verificar(TipoPersonaPersona entity)
         {
-            if (ReadBy(entity.persona.Id,entity.tipoPersona.Id)is null)
+            TipoPersonaPersona tipo = new TipoPersonaPersona();
+            tipo= ReadBy(entity.persona.Id,entity.tipoPersona.Id);
+            if (tipo is null)
             {
                 return true;
             }

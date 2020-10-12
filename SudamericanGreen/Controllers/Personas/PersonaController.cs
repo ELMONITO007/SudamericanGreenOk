@@ -60,19 +60,32 @@ namespace Evaluaciones_Tecnicas.Controllers.Personas
                 // TODO: Add insert logic here
                 Persona persona = new Persona();
                 PersonaComponent personaComponent = new PersonaComponent();
+                persona.usuarios.Nombre = collection.Get("usuarios.Nombre");
+                persona.usuarios.Apellido = collection.Get("usuarios.Apellido");
                 persona.Id = int.Parse(collection.Get("Id"));
                 persona.cuil = collection.Get("cuil");
                 persona.email = collection.Get("email");
                 persona.telefono = collection.Get("telefono");
-                persona.tipoPersona.Id =int.Parse( collection.Get("tipoPersona.Id"));
-                if (personaComponent.Create(persona)is null)
+                persona.tipoPersona.Id = int.Parse(collection.Get("tipoPersona.tipoPersona"));
+                persona.Direccion.direccion = collection.Get("Direccion.direccion");
+                persona.Direccion.numero =int.Parse( collection.Get("Direccion.numero"));
+                persona.Direccion.piso = int.Parse(collection.Get("Direccion.piso"));
+                persona.Direccion.departamento = collection.Get("Direccion.departamento");
+                persona.Direccion.codigoPostal = int.Parse(collection.Get("Direccion.codigoPostal"));
+                persona.Direccion.localidad = collection.Get("Direccion.localidad");
+                persona.Direccion.provincia = collection.Get("Direccion.provincia");
+
+
+
+                if (personaComponent.Create(persona) is null)
                 {
                     return RedirectToAction("Index");
                 }
                 else
                 {
-                    return RedirectToAction("ErrorPage",new { id= persona.Id});
+                    return RedirectToAction("ErrorPage", new { id = persona.Id });
                 }
+                
             }
             catch (Exception e)
             {

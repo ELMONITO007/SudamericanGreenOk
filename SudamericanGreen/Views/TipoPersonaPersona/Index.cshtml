@@ -25,20 +25,25 @@
                                     <thead>
 
                                         <tr role="row">
-                                            <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 103px;">  @Html.DisplayFor(model => model.tipoPersona.tipoPersona)</th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 103px;"> Tipo De Persona</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 162px;">Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach (var item in Model.tipoPersonaPersona)
                                         {
-                                            <tr role="row" class="odd">
-                                                <td>
-                                                  
-                                                  
-                                                    @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })
-                                                </td>
-                                            </tr>
+                                        <tr role="row" class="odd">
+                                            <td>
+
+
+                                                @item.tipoPersona.tipoPersona
+                                            </td>
+                                            <td>
+
+
+                                                @Html.ActionLink("Eliminar", "Delete", new { id = Model.persona.Id, tipo=item.tipoPersona.Id })
+                                            </td>
+                                        </tr>
                                         }
                                     </tbody>
                                 </table>

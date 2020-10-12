@@ -18,6 +18,7 @@ namespace Entities
             persona = new Persona();
             tipoPersona = new TipoPersona();
             listaTipoPersona = new List<TipoPersona>();
+            tipoPersonaPersona = new List<TipoPersonaPersona>();
         }
     }
 }

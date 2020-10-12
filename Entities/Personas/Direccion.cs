@@ -12,9 +12,12 @@ namespace Entities
     {
         public override int Id { get; set; }
 
-        [Required]
         [DisplayName("Direccion")]
-        [DataType(DataType.Text, ErrorMessage = "Solo Ingrese texto")]
+        [Required]
+        
+        [RegularExpression("^[a-zA-Z ]*$", ErrorMessage = "ingresar solo letras")]
+        [StringLength(20, ErrorMessage = "El maximo de caracteres es de 20")]
+        [MinLength(2, ErrorMessage = "El minimo de caracteres es de 2")]
         public string direccion { get; set; }
 
         [Required]
@@ -23,13 +26,18 @@ namespace Entities
 
         public int numero { get; set; }
 
-        [Required]
+    
         [DisplayName("Piso")]
-        [Range(1, 99, ErrorMessage = "Colocar numeros del 1 al 99")]
+        [Range(0, 99, ErrorMessage = "Colocar numeros del 1 al 99")]
         public int piso { get; set; }
 
-        [Required]
+
+        [DisplayName("Departamento")]
+        [RegularExpression("^[a-zA-Z ]*$", ErrorMessage = "ingresar solo letras")]
+        [StringLength(3, ErrorMessage = "El maximo de caracteres es de 20")]
+        
         public string departamento { get; set; }
+
         [Required]
         [DisplayName("Localidad")]
         [DataType(DataType.Text, ErrorMessage = "Solo Ingrese texto")]
@@ -43,7 +51,9 @@ namespace Entities
 
         [Required]
         [DisplayName("Provincia")]
-        [DataType(DataType.Text, ErrorMessage = "Solo Ingrese texto")]
+        [RegularExpression("^[a-zA-Z ]*$", ErrorMessage = "ingresar solo letras")]
+        [StringLength(20, ErrorMessage = "El maximo de caracteres es de 20")]
+        [MinLength(2, ErrorMessage = "El minimo de caracteres es de 2")]
         public string provincia { get; set; }
     }
 }

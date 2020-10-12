@@ -30,19 +30,19 @@ namespace Data
         public Persona Create(Persona entity)
         {
 
-            const string SQL_STATEMENT = "insert into Direccion(DNI,Direccion,Numero,Piso,Departamento,Localidad,CodigoPostal,Provincia,activo)values (@DNI,@Direccion,@Numero,@Piso,@Departamento,@Localidad,@CodigoPostal,@Provincia,1)";
+            const string SQL_STATEMENT = "insert into Persona(DNI,Cuil,EMail,Telefono,ID_TipoPersona,Activo,id)values(@DNI,@Cuil,@EMail,@Telefono,@ID_TipoPersona,1,@id)";
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
             using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
             {
-                db.AddInParameter(cmd, "@DNI", DbType.Int32, entity.Id);
-                db.AddInParameter(cmd, "@cuil", DbType.Int32, entity.cuil);
+        
+                db.AddInParameter(cmd, "@cuil", DbType.String, entity.cuil);
                 db.AddInParameter(cmd, "@email", DbType.String, entity.email);
              
                 db.AddInParameter(cmd, "@telefono", DbType.String, entity.telefono);
                 db.AddInParameter(cmd, "@Id_tipoPersona", DbType.Int32, entity.tipoPersona.Id);
-                db.AddInParameter(cmd, "@Id", DbType.String, entity.usuarios.Id);
-
-                entity.Id = Convert.ToInt32(db.ExecuteScalar(cmd));
+                db.AddInParameter(cmd, "@DNI", DbType.Int32, entity.Id);
+                db.AddInParameter(cmd, "@id", DbType.Int32, entity.usuarios.Id);
+                db.ExecuteScalar(cmd);
             }
             return entity;
 

@@ -11,36 +11,37 @@
 {
     @Html.AntiForgeryToken()
     
-       <div class="d-flex flex-column" style="max-width:60%">
-        <div class="container-fluid">
-            <div class="card shadow mb-4">
-                <div class=" card-header py-3" >
-                    <h6 class="m-0 font-weight-bold text-primary">Agregar un Tipo de persona </h6>
+       <div class="d-flex flex-column" style="max-width:39%">
+           <div class="container-fluid">
+               <div class="card shadow mb-4">
+                   <div class=" card-header py-3">
+                       <h6 class="m-0 font-weight-bold text-primary">Agregar un Tipo de persona a @Model.persona.usuarios.Nombre  @Model.persona.usuarios.Apellido  </h6>
 
 
 
-                </div>
-                <div class="card-body">
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    @Html.HiddenFor(model => model.persona.Id)
+                   </div>
+                   <div class="card-body">
+                       @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                       @Html.HiddenFor(model => model.persona.Id)
 
-                    <h5 class="text-justify">Tipo de persona disponibles</h5>
+                       <h5 class="text-justify">Tipo de persona disponibles</h5>
+                       <br />
 
-                    @Html.DropDownListFor(model => model.tipoPersona.tipoPersona, (IEnumerable<SelectListItem>)ViewBag.RolesLista, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.tipoPersona.tipoPersona, "", new { @class = "text-danger" })
-                    <br />
+                       @Html.DropDownListFor(model => model.tipoPersona.tipoPersona, (IEnumerable<SelectListItem>)ViewBag.RolesLista, new { @class = "form-control", @style = "max-width:20%" })
+                       @Html.ValidationMessageFor(model => model.tipoPersona.tipoPersona, "", new { @class = "text-danger" })
+                       <br />
 
 
 
-                    <input type="button" class="btn btn-outline-primary " style="margin-left:30%;max-width:40%" value="Volver" onclick="location.href='@Url.Action("Index", "TipoPersonaPersona",new { id=Model.persona.Id})'" />
+                       <input type="button" class="btn btn-outline-primary " style="margin-left:39%;max-width:40%" value="Volver" onclick="location.href='@Url.Action("Index", "TipoPersonaPersona",new { id=Model.persona.Id})'" />
 
-                    <br />
+                       <br />
+                       <br />
+                       <input type="submit" style="margin-left:40%;max-width:40%" value="Crear" class="btn btn-outline-info" />
 
-                    <input type="submit" style="margin-left:30%;max-width:40%" value="Crear" class="btn btn-outline-info" />
-
-                </div>
-     </div>
-
+                   </div>
+               </div>
+           </div>
     </div>
 }
 

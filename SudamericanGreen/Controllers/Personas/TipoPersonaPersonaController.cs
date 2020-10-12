@@ -49,9 +49,17 @@ namespace Evaluaciones_Tecnicas.Controllers.Personas
 
             ViewBag.RolesLista = new SelectList(tipoPersonaPersona.tipoPersonaPersona, "tipoPersona.Id", "tipoPersona.tipoPersona");
 
-
+            if (tipoPersonaPersona.tipoPersonaPersona.Count==0)
+            {
+            tipoPersonaPersona=personaComponent.ObtenerTipoDisponible(id);
+                return RedirectToAction("ErroPage", new { id = tipoPersonaPersona.persona.Id });
+            }
+            else
+            {
+                return View(tipoPersonaPersona);
+            }
             
-            return View(tipoPersonaPersona);
+           
         }
 
         //
@@ -66,10 +74,10 @@ namespace Evaluaciones_Tecnicas.Controllers.Personas
                 TipoPersonaPersona tipoPersonaPersona = new TipoPersonaPersona();
                 TipoPersonaPersonaComponent tipoPersona = new TipoPersonaPersonaComponent();
                 tipoPersonaPersona.persona.Id = int.Parse(collection.Get("persona.id"));
-                tipoPersonaPersona.tipoPersona.Id = int.Parse(collection.Get("tipoPersona.id"));
+                tipoPersonaPersona.tipoPersona.Id = int.Parse(collection.Get("tipoPersona.tipoPersona"));
                 if (tipoPersona.Create(tipoPersonaPersona) is null)
                 {
-                    return RedirectToAction("ErrorPage", new { id = tipoPersonaPersona.persona.Id });
+                    return RedirectToAction("ErroPage", new { id = tipoPersonaPersona.persona.Id });
                 }
                 else
                 {

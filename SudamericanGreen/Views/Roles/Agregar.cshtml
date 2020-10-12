@@ -27,7 +27,7 @@
                         Nombre del permiso
                     </h5>
 
-                    @Html.DropDownListFor(model => model.name, (IEnumerable<SelectListItem>)ViewBag.ListaSedes, new { @class = "form-control" })
+                    @Html.DropDownListFor(model => model.name, (IEnumerable<SelectListItem>)ViewBag.listaTipoPersona, new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
 
                 </div>
