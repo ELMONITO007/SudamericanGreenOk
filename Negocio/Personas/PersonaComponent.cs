@@ -21,7 +21,8 @@ namespace Negocio
                 UsuariosComponent usuariosComponent = new UsuariosComponent();
                 usuarios = entity.usuarios;
                 usuarios.Email = entity.email;
-                usuariosComponent.Create(entity.usuarios);
+                usuarios.UserName = entity.email;
+                usuariosComponent.Crear(usuarios);
                 //Crear persona
                 PersonaDAC personaDAC = new PersonaDAC();
                 Persona persona = new Persona();
@@ -92,12 +93,14 @@ namespace Negocio
         public Persona ObtenerTipoPersonaDiponible(int id)
         {
             Persona persona = new Persona();
+            PersonaDAC tipoPersonaDAC = new PersonaDAC();
             List<TipoPersona> tipoPersonasBase = new List<TipoPersona>();
             List<TipoPersonaPersona> tipoPersonaPersonas = new List<TipoPersonaPersona>();
         TipoPersonaPersonaComponent tipoPersonaPersonaComponent = new TipoPersonaPersonaComponent();
             TipoPersonaComponent tipoPersonaComponent = new TipoPersonaComponent();
             tipoPersonasBase = tipoPersonaComponent.Read();
             tipoPersonaPersonas = tipoPersonaPersonaComponent.Read(id);
+            persona = tipoPersonaDAC.ReadBy(id);
             foreach (TipoPersona item in tipoPersonasBase)
             {
                 int a = 0;
@@ -115,6 +118,8 @@ namespace Negocio
                     persona.listaTipoPersona.Add(item);
                 }
             }
+
+
 
             return persona;
         

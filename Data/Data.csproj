@@ -48,6 +48,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clientes\EquipoClienteDAC.cs" />
+    <Compile Include="Clientes\MarcaDAC.cs" />
+    <Compile Include="Clientes\TipoEquipoDAC.cs" />
     <Compile Include="DataAccessComponent.cs" />
     <Compile Include="IRepository2.cs" />
     <Compile Include="IRepository.cs" />

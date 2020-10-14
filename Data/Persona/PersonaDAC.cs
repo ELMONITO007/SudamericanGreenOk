@@ -51,7 +51,7 @@ namespace Data
         public void Delete(int id)
         {
 
-            const string SQL_STATEMENT = "update Persona set Activo=0 where id_Direccion=@Id";
+            const string SQL_STATEMENT = "update Persona set Activo=0 where DNI=@Id";
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
             using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
             {
@@ -112,13 +112,13 @@ namespace Data
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
             using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
             {
-                db.AddInParameter(cmd, "@cuil", DbType.Int32, entity.cuil);
+                db.AddInParameter(cmd, "@cuil", DbType.String, entity.cuil);
                 db.AddInParameter(cmd, "@email", DbType.String, entity.email);
              
                 db.AddInParameter(cmd, "@telefono", DbType.String, entity.telefono);
            
              
-                db.AddInParameter(cmd, "@DNI", DbType.String, entity.Id);
+                db.AddInParameter(cmd, "@DNI", DbType.Int32, entity.Id);
                 db.ExecuteNonQuery(cmd);
             }
         }

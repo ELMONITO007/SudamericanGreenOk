@@ -166,6 +166,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clientes\EquipoClientes\EquipoCliente.cs" />
+    <Compile Include="Clientes\EquipoClientes\Marca.cs" />
+    <Compile Include="Clientes\EquipoClientes\TipoEquipo.cs" />
     <Compile Include="EntityBase.cs" />
     <Compile Include="Personas\Direccion.cs" />
     <Compile Include="Personas\DireccionPersona.cs" />

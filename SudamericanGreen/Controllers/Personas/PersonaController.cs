@@ -62,6 +62,8 @@ namespace Evaluaciones_Tecnicas.Controllers.Personas
                 PersonaComponent personaComponent = new PersonaComponent();
                 persona.usuarios.Nombre = collection.Get("usuarios.Nombre");
                 persona.usuarios.Apellido = collection.Get("usuarios.Apellido");
+                persona.usuarios.Password = collection.Get("usuarios.Password");
+                persona.usuarios.Email = collection.Get("email");
                 persona.Id = int.Parse(collection.Get("Id"));
                 persona.cuil = collection.Get("cuil");
                 persona.email = collection.Get("email");
@@ -74,16 +76,18 @@ namespace Evaluaciones_Tecnicas.Controllers.Personas
                 persona.Direccion.codigoPostal = int.Parse(collection.Get("Direccion.codigoPostal"));
                 persona.Direccion.localidad = collection.Get("Direccion.localidad");
                 persona.Direccion.provincia = collection.Get("Direccion.provincia");
+                Persona resul = new Persona();
+                resul = personaComponent.Create(persona);
 
 
-
-                if (personaComponent.Create(persona) is null)
+                if (resul== null)
                 {
-                    return RedirectToAction("Index");
+                    return RedirectToAction("ErrorPage", new { id = persona.Id });
+                
                 }
                 else
                 {
-                    return RedirectToAction("ErrorPage", new { id = persona.Id });
+                    return RedirectToAction("Index");
                 }
                 
             }
@@ -97,11 +101,12 @@ namespace Evaluaciones_Tecnicas.Controllers.Personas
         // GET: /Persona/Edit/5
         public ActionResult Edit(int id)
         {
+
             Persona persona = new Persona();
-            PersonaComponent personaComponent = new PersonaComponent();
-            TipoPersonaComponent tipoPersonaComponent = new TipoPersonaComponent();
-            persona = personaComponent.ReadBy(id);
-            persona = personaComponent.ObtenerTipoPersonaDiponible(id);
+            TipoPersonaComponent personaComponent = new TipoPersonaComponent();
+            PersonaComponent component = new PersonaComponent();
+            persona = component.ReadBy(id);
+            persona.listaTipoPersona = personaComponent.Read();
 
             persona.listaTipoPersona.Select(y =>
                              new
@@ -130,7 +135,7 @@ namespace Evaluaciones_Tecnicas.Controllers.Personas
                 persona.cuil = collection.Get("cuil");
                 persona.email = collection.Get("email");
                 persona.telefono = collection.Get("telefono");
-                persona.tipoPersona.Id = int.Parse(collection.Get("tipoPersona.Id"));
+                persona.tipoPersona.Id = int.Parse(collection.Get("tipoPersona.tipoPersona"));
                 if (personaComponent.Update(persona))
                 {
                     return RedirectToAction("Index");

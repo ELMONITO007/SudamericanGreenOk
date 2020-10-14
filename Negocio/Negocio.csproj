@@ -49,6 +49,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clientes\EquipoClienteComponent.cs" />
+    <Compile Include="Clientes\MarcaComponent.cs" />
+    <Compile Include="Clientes\TipoEquipoComponent.cs" />
     <Compile Include="Component.cs" />
     <Compile Include="Informes\Informes.cs" />
     <Compile Include="IRepository.cs" />
@@ -79,9 +82,7 @@
       <Name>Entities</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Examen\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />

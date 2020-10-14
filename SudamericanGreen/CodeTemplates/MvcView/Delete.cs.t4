@@ -55,7 +55,7 @@ if (!String.IsNullOrEmpty(LayoutPageFile)) {
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
-
+         @Html.HiddenFor(model => model.Id)
 <div class="form-actions no-color">
     <input type="submit" value="Eliminar" style="margin-left:1%" class="btn btn-outline-info" />
     <br/>
