@@ -69,10 +69,27 @@ namespace Evaluaciones.Controllers
                     UsuariosComponent usuariosComponent = new UsuariosComponent();
                     usuarios1 = usuariosComponent.ReadByEmail(usuarios.Email);
                         Session["UserName"] = usuarios1;
-                       
 
+                    UsuarioRolesComponent usuarioRolesComponent = new UsuarioRolesComponent();
+                   List< UsuarioRoles> usuarioRoles = new List<UsuarioRoles>();
+                    usuarioRoles = usuarioRolesComponent.ReadByUsuario(usuarios1.Id);
+                    string pagina = "";
+                    foreach (UsuarioRoles item in usuarioRoles)
+                    {
+                        if (item.roles.name=="Cliente")
+                        {
+                            pagina = "Cliente";
+                            break;
+                        }
+                        if (item.roles.name== "Administrador")
+                        {
+                            pagina = "Admin";
+                            break;
+                        }
 
-                        return RedirectToAction("index","admin");
+                    }
+
+                        return RedirectToAction("index",pagina);
                     }
 
 

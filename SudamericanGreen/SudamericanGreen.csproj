@@ -2010,6 +2010,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\Clientes\ClienteController.cs" />
     <Compile Include="Controllers\Clientes\EquipoClienteController.cs" />
     <Compile Include="Controllers\Clientes\MarcaController.cs" />
     <Compile Include="Controllers\Clientes\TipoEquipoController.cs" />
@@ -2318,6 +2319,8 @@
     <Content Include="Views\EquipoCliente\Index.cshtml" />
     <Content Include="Views\EquipoCliente\ErrorPage.cshtml" />
     <Content Include="Views\EquipoCliente\Create.cshtml" />
+    <Content Include="Views\Shared\_LayoutCliente.cshtml" />
+    <Content Include="Views\Cliente\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

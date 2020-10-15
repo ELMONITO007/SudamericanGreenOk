@@ -65,7 +65,7 @@ namespace Data
 
         public List<EquipoCliente> Read()
         {
-            const string SQL_STATEMENT = "select * form EquipoCliente where  activo=1";
+            const string SQL_STATEMENT = "select * from EquipoCliente where  activo=1";
 
             List<EquipoCliente> result = new List<EquipoCliente>();
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
