@@ -1,0 +1,34 @@
+﻿@model Entities.TipoEquipo
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+
+
+
+<link href="~/Content/modern-business.css" rel="stylesheet" />
+
+<div>
+    <h3>¿Esta seguro de eliminar el Tipo de equipo <i>"@Html.DisplayFor(model => model.tipoEquipo)"</i>?</h3>
+    <hr />
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        
+<div class="form-actions no-color">
+    <input type="submit" value="Eliminar" style="margin-left:1%" class="btn btn-outline-info" />
+    <br/>
+    <input type="button" class="btn btn-outline-primary " style="float:left;margin-left:1%;margin-top:3%" value="Volver" onclick="location.href='@Url.Action("Index", "tipoEquipo")'" />
+</div>
+    }
+</div>
+
+
+
+
+
+

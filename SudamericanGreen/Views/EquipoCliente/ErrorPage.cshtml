@@ -1,0 +1,47 @@
+﻿@model Entities.EquipoCliente
+
+@{
+    ViewBag.Title = "ErrorPage";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+
+
+<link href="~/Content/modern-business.css" rel="stylesheet" />
+
+
+
+<div id="content-wrapper" class="d-flex flex-column">
+
+    <!-- Main Content -->
+    <div id="content">
+
+
+
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+
+            <!-- 404 Error Text -->
+            <div class="text-center">
+                <div class="error mx-auto" data-text="Error">Error</div>
+                <p class="lead text-gray-800 mb-5">No se puede agregrar o modificar el equipo con serial <i>"@Html.DisplayFor(model => model.serial) "</i>.Ya existe
+<p class="text-gray-500 mb-0">Por favor colocar otro nombre</p>
+                <a href="@Url.Action("Index", "EquipoCliente")">← volver al inicio</a>
+            </div>
+
+        </div>
+        <!-- /.container-fluid -->
+
+    </div>
+    <!-- End of Main Content -->
+
+
+
+
+
+
+
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

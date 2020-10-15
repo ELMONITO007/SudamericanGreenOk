@@ -51,17 +51,11 @@ namespace Negocio
         public bool Update(TipoEquipo entity)
         {
 
-            if (Verificar(entity))
-            {
+         
                 TipoEquipoDAC tipoEquipo = new TipoEquipoDAC();
                 tipoEquipo.Update(entity);
                 return true;
 
-            }
-            else
-            {
-                return false;
-            }
         }
 
         public bool Verificar(TipoEquipo entity)

@@ -51,7 +51,7 @@ namespace Data
 
         public List<TipoEquipo> Read()
         {
-            const string SQL_STATEMENT = "select * form TipoEquipo where  activo=1";
+            const string SQL_STATEMENT = "select * from TipoEquipo where  activo=1";
 
             List<TipoEquipo> result = new List<TipoEquipo>();
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
@@ -111,7 +111,7 @@ namespace Data
 
         public void Update(TipoEquipo entity)
         {
-            const string SQL_STATEMENT = "update TipoEquipo set TipoEquipo=@TipoEquipo,descripcion=@descripcion  where id_descripcion=@Id";
+            const string SQL_STATEMENT = "update TipoEquipo set TipoEquipo=@TipoEquipo,descripcion=@descripcion  where id_TipoEquipo=@Id";
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
             using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
             {

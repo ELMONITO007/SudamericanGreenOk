@@ -82,7 +82,26 @@ namespace Data
             }
             return result;
         }
+        public List<EquipoCliente> ReadByCliente(int id)
+        {
+            const string SQL_STATEMENT = "select * form EquipoCliente where  activo=1 and dni=@id";
 
+            List<EquipoCliente> result = new List<EquipoCliente>();
+            var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
+            using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
+            {
+                db.AddInParameter(cmd, "@Id", DbType.Int32, id);
+                using (IDataReader dr = db.ExecuteReader(cmd))
+                {
+                    while (dr.Read())
+                    {
+                        EquipoCliente roles = ALoad(dr);
+                        result.Add(roles);
+                    }
+                }
+            }
+            return result;
+        }
         public EquipoCliente ReadBy(int id)
         {
             const string SQL_STATEMENT = "select * from EquipoCliente where  activo=1 and id_EquipoCliente=@Id";

@@ -124,15 +124,15 @@ foreach (PropertyMetadata property in ModelMetadata.Properties) {
                 @Html.ValidationMessageFor(model => model.<#= property.PropertyName #>, "", new { @class = "text-danger" })
             
         </div>
-      </br>
-       </br>
+     <br />
+                    <br />
 <#
     }
 }
 #>
-      
+       
      </div>
-      <input type="button" class="btn btn-outline-primary"  value="Volver" onclick="location.href='@Url.Action("Index", "")'" />
+     <input type="button" class="btn btn-outline-primary"  value="Volver" onclick="location.href='@Url.Action("Index", "")'" />
 
                 <br />
 

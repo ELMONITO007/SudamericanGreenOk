@@ -16,15 +16,15 @@ namespace Entities
         [Required(ErrorMessage ="Campo {0} vacio")]
         [DisplayName("Tipo de Equipo")]
 
-        [RegularExpression("^[a-zA-Z ]*$", ErrorMessage = "ingresar solo letras")]
+        [RegularExpression(@"[ A-Za-zäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ.-]+", ErrorMessage = "ingresar solo letras")]
         [StringLength(20, ErrorMessage = "El maximo de caracteres es de 20")]
         [MinLength(2, ErrorMessage = "El minimo de caracteres es de 2")]
         public string tipoEquipo { get; set; }
 
         [Required(ErrorMessage = "Campo {0} vacio")]
         [DisplayName("Descripcion")]
-                [RegularExpression("^[a-zA-Z ]*$", ErrorMessage = "ingresar solo letras")]
-        [StringLength(20, ErrorMessage = "El maximo de caracteres es de 20")]
+        [RegularExpression(@"[ A-Za-zäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ.-]+", ErrorMessage = "ingresar solo letras")]
+        [StringLength(60, ErrorMessage = "El maximo de caracteres es de 60")]
         [MinLength(2, ErrorMessage = "El minimo de caracteres es de 2")]
         public string descripcion { get; set; }
 

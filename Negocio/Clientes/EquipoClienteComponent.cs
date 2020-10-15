@@ -55,7 +55,31 @@ namespace Negocio
 
             return result;
         }
+        public List<EquipoCliente> ReadByCliente(int id)
+        {
+            EquipoClienteDAC equipoClienteDAC = new EquipoClienteDAC();
+            List<EquipoCliente> equipoClientes = new List<EquipoCliente>();
+            equipoClientes = equipoClienteDAC.ReadByCliente(id);
+            List<EquipoCliente> result = new List<EquipoCliente>();
 
+            TipoEquipoComponent tipoEquipoComponent = new TipoEquipoComponent();
+            PersonaComponent personaComponent = new PersonaComponent();
+            MarcaComponent marcaComponent = new MarcaComponent();
+            foreach (EquipoCliente item in equipoClientes)
+            {
+                EquipoCliente equipoCliente = new EquipoCliente();
+                equipoCliente = item;
+                equipoCliente.persona = personaComponent.ReadBy(item.persona.Id);
+                equipoCliente.marca = marcaComponent.ReadBy(item.marca.Id);
+                equipoCliente.tipoEquipo = tipoEquipoComponent.ReadBy(item.tipoEquipo.Id);
+
+                result.Add(equipoCliente);
+
+            }
+
+
+            return result;
+        }
         public EquipoCliente ReadBy(int id)
         {
             EquipoClienteDAC equipoClienteDAC = new EquipoClienteDAC();

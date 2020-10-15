@@ -17,7 +17,7 @@ namespace Data
             Marca marca = new Marca();
             marca.Id = GetDataValue<int>(entity, "ID_Marca");
             marca.marca=GetDataValue<string>(entity, "Marca");
-            throw new NotImplementedException();
+            return marca;
         }
 
         public Marca Create(Marca entity)
@@ -50,7 +50,7 @@ namespace Data
 
         public List<Marca> Read()
         {
-            const string SQL_STATEMENT = "select * form Marca where  activo=1";
+            const string SQL_STATEMENT = "select * from Marca where  activo=1";
 
             List<Marca> result = new List<Marca>();
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);

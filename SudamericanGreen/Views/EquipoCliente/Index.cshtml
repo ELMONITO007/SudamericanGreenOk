@@ -1,0 +1,97 @@
+﻿@model IEnumerable<Entities.EquipoCliente>
+
+@{
+    ViewBag.Title = "EquipoDelCliente";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+
+
+<div id="content-wrapper" class="d-flex flex-column">
+    <!-- Main Content -->
+    <div id="content">
+
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Lista de Equipos</h6>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                            <div class="col-sm-12">
+                                <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                                    <thead>
+
+                                        <tr role="row">
+                                            <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 103px;">@Html.DisplayNameFor(model => model.persona.usuarios.Nombre) </th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 162px;">@Html.DisplayNameFor(model => model.persona.email)</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 162px;">@Html.DisplayNameFor(model => model.marca.marca)</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 162px;">@Html.DisplayNameFor(model => model.modelo)</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 162px;">@Html.DisplayNameFor(model => model.tipoEquipo.tipoEquipo)</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 162px;">@Html.DisplayNameFor(model => model.serial)</th>
+
+                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 162px;">@Html.DisplayNameFor(model => model.fechaCompra)</th>
+
+                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 162px;">@Html.DisplayNameFor(model => model.peso)</th>
+
+                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 162px;">@Html.DisplayNameFor(model => model.antiguedad)</th>
+
+
+
+                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 162px;">Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr role="row" class="odd">
+                                                <td class="sorting_1">
+                                                    @Html.DisplayFor(modelItem => item.persona.usuarios.Nombre)  @Html.DisplayFor(modelItem => item.persona.usuarios.Apellido)
+                                                </td>
+                                                <td class="sorting_1">
+                                                    @Html.DisplayFor(modelItem => item.persona.email)
+                                                </td>
+                                                <td class="sorting_1">
+                                                    @Html.DisplayFor(modelItem => item.marca.marca)
+                                                </td>
+                                                <td class="sorting_1">
+                                                    @Html.DisplayFor(modelItem => item.modelo)
+                                                </td>
+                                                <td class="sorting_1">
+                                                    @Html.DisplayFor(modelItem => item.serial)
+                                                </td>
+                                                <td class="sorting_1">
+                                                    @Html.DisplayFor(modelItem => item.tipoEquipo.tipoEquipo)
+                                                </td>
+                                                <td class="sorting_1">
+                                                    @Html.DisplayFor(modelItem => item.fechaCompra)
+                                                </td>
+                                                <td class="sorting_1">
+                                                    @Html.DisplayFor(modelItem => item.peso)
+                                                </td>
+                                                <td class="sorting_1">
+                                                    @Html.DisplayFor(modelItem => item.antiguedad)
+                                                </td>
+
+                                                <td>
+                                                    @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
+
+                                                    @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                    <input type="button" class="btn btn-outline-primary " style="float:right" value="Crear" onclick="location.href='@Url.Action("Index", "EquipoCliente")'" />
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

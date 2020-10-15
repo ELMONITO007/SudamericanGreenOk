@@ -2010,6 +2010,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\Clientes\EquipoClienteController.cs" />
+    <Compile Include="Controllers\Clientes\MarcaController.cs" />
+    <Compile Include="Controllers\Clientes\TipoEquipoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Personas\DireccionPersonaController.cs" />
     <Compile Include="Controllers\Personas\PersonaController.cs" />
@@ -2301,6 +2304,20 @@
     <Content Include="Views\Persona\ErrorPage.cshtml" />
     <Content Include="Views\Persona\Edit.cshtml" />
     <Content Include="Views\Persona\Delete.cshtml" />
+    <Content Include="Views\TipoEquipo\Index.cshtml" />
+    <Content Include="Views\TipoEquipo\ErrorPage.cshtml" />
+    <Content Include="Views\TipoEquipo\Create.cshtml" />
+    <Content Include="Views\TipoEquipo\Edit.cshtml" />
+    <Content Include="Views\TipoEquipo\Delete.cshtml" />
+    <Content Include="Views\Marca\Index.cshtml" />
+    <Content Include="Views\Marca\ErrorPage.cshtml" />
+    <Content Include="Views\Marca\Create.cshtml" />
+    <Content Include="Views\Marca\Edit.cshtml" />
+    <Content Include="Views\Marca\Delete.cshtml" />
+    <Content Include="Views\EquipoCliente\EquipoDelCliente.cshtml" />
+    <Content Include="Views\EquipoCliente\Index.cshtml" />
+    <Content Include="Views\EquipoCliente\ErrorPage.cshtml" />
+    <Content Include="Views\EquipoCliente\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
